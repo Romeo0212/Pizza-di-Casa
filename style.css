@@ -1,0 +1,868 @@
+/*
+Theme Name: Pizza di Casa
+Author: Tuo Nome
+Description: Custom theme for Pizza di Casa London
+Version: 2.0
+*/
+
+:root {
+  --primary-red: #cc0000;
+  --bg-light: #fcfaf5; 
+  --text-dark: #2c2c2c;
+  --header-bg: #1a1a1a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
+}
+
+.red {
+  color: var(--primary-red);
+}
+
+main {
+  flex-grow: 1; 
+}
+
+/* Tipografia Avanzata */
+h1, h2, h3 {
+  font-family: 'Georgia', serif; 
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.page-container h1 {
+  font-size: 2.8rem;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.page-container h1::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 60px;
+  height: 4px;
+  background-color: var(--primary-red);
+}
+
+.page-container h2 {
+  font-size: 1.8rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary-red);
+}
+
+/* Header & Navigation */
+.site-header {
+  background-color: var(--header-bg);
+  padding: 15px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4); 
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.site-logo img {
+  max-height: 70px;
+  width: auto;
+  display: block;
+}
+
+/* Stile del Menu Dinamico */
+.main-nav .nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 30px;
+}
+
+.main-nav .nav-list a,
+.main-nav .nav-list span.active-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  position: relative;
+  cursor: default;
+}
+
+.main-nav .nav-list a::after,
+.main-nav .nav-list span.active-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-red);
+  transition: width 0.3s ease;
+}
+
+.main-nav .nav-list a:hover::after,
+.main-nav .nav-list span.active-link::after {
+  width: 100%;
+}
+
+.main-nav .nav-list a:hover,
+.main-nav .nav-list .current-menu-item > a {
+  color: #ffffff; 
+}
+
+/* Social Icons Header */
+.main-nav {
+  display: flex;
+  align-items: center;
+}
+
+.header-socials {
+  display: flex;
+  gap: 15px;
+  margin-left: 30px;
+  padding-left: 30px;
+  border-left: 1px solid #444; 
+}
+
+.header-socials a {
+  color: #ffffff;
+  font-size: 1.2rem;
+  transition: color 0.3s, transform 0.2s;
+}
+
+.header-socials a:hover {
+  color: var(--primary-red);
+  transform: scale(1.1);
+}
+
+/* Hero Section */
+.hero {
+  background-color: #111;
+  background-image: url('media/banner.jpg'); /* Spostato dal CSS inline */
+  background-size: cover;
+  background-position: center;
+  padding: 50px 20px 150px;
+  text-align: center;
+  color: #fff;
+  position: relative;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-size: 4rem;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+  color: #fff;
+}
+
+.hero p {
+  font-size: 1.3rem;
+  margin-bottom: 30px;
+}
+
+/* Sezioni Home Page */
+.home-section {
+  padding: 80px 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.home-section h2 {
+  font-size: 2.5rem;
+  color: var(--primary-red);
+  margin-bottom: 20px;
+}
+
+
+/* Classi sostitutive per il testo inline rimosso */
+.intro-text {
+    max-width: 800px;
+    margin: 0 auto 30px;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.dietary-intro-spacing {
+    margin-bottom: 40px;
+}
+
+.two-cols {
+  display: flex;
+  gap: 40px;
+  margin-top: 50px;
+  flex-wrap: wrap;
+}
+
+/* Dietary Section */
+.dietary-section {
+  background-color: #f9f9f9; /* Spostato dal CSS inline */
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.dietary-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.dietary-content h2 {
+  font-size: 2.2rem;
+  color: var(--text-dark);
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+
+.dietary-content .underline {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 3px;
+}
+
+.dietary-content p {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.8;
+}
+
+.dietary-icons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+}
+
+.diet-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #b54800; 
+  text-transform: uppercase;
+}
+
+.diet-icon .icon-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: #fff;
+  font-weight: normal;
+}
+
+/* Colori Icone */
+.icon-halal { background-color: #e55322; color: #ffffff; }
+.icon-gluten { background-color: #f7b718; color: #1a1a1a; } 
+.icon-vegan { background-color: #8bc53f; color: #1a1a1a; } 
+.icon-veg { background-color: #39b54a; color: #ffffff; } 
+.icon-dairy { background-color: #006838; color: #ffffff; }
+
+/* Bottoni */
+.btn-dark {
+  display: inline-block;
+  background-color: #000000;
+  color: #ffffff;
+  padding: 16px 40px;
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease; 
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+}
+
+.btn-dark:hover {
+  background-color: #333333;
+  color: #ffffff;
+  transform: translateY(-3px); 
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15); 
+}
+
+/* Pulsante Secondario (Email) */
+.btn-outline {
+  display: inline-block;
+  background-color: transparent;
+  color: #fff;
+  padding: 14px 35px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 30px;
+  text-transform: uppercase;
+  border: 2px solid var(--primary-red);
+  transition: background 0.3s, color 0.3s, transform 0.2s;
+  margin-top: 15px; 
+}
+
+.btn-outline:hover {
+  background-color: var(--primary-red);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.btn-outline.dark-text {
+  color: var(--text-dark);
+  border-color: var(--text-dark);
+}
+.btn-outline.dark-text:hover {
+  background-color: var(--text-dark);
+  color: #fff;
+}
+
+/* Variante piccola per il footer spostata dal CSS inline */
+.btn-outline.btn-small {
+    padding: 10px 25px;
+    font-size: 0.85rem;
+}
+
+/* Center CTA Container rimosso dall'HTML */
+.center-cta {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* Cards */
+.col {
+  flex: 1;
+  min-width: 300px;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  border-top: 5px solid var(--primary-red);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.col .cta-container {
+  margin-top: auto; 
+  text-align: center; 
+  padding-top: 25px; 
+}
+
+.col h3 {
+  font-size: 1.5rem;
+  color: var(--primary-red);
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.page-container {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+/* Footer (Layout e Elementi puliti) */
+.site-footer {
+  background-color: #1a1a1a;
+  color: #888;
+  text-align: center;
+  margin-top: auto;
+  border-top: 5px solid var(--primary-red);
+  padding: 0;
+}
+
+.footer-main {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.footer-col {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-col h3 {
+  color: #fff;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+/* Sostituisce il margin-bottom inline in Contact Us */
+.footer-contact-text {
+    margin-bottom: 20px;
+}
+
+.footer-socials {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footer-socials a {
+  font-size: 1.5rem;
+  color: #ffffff; 
+  transition: color 0.3s, transform 0.2s;
+}
+
+.footer-socials a:hover {
+  color: var(--primary-red);
+  transform: scale(1.1); 
+}
+
+.footer-legal-list { 
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  line-height: 2.2;
+}
+
+.footer-legal-link { 
+  color: #ccc;
+  text-decoration: none;
+}
+
+.footer-bottom {
+  background-color: #111111; 
+  padding: 20px;
+  font-size: 0.85rem;
+  border-top: 1px solid #2a2a2a;
+}
+
+.copyright-string {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.developer-link {
+  color: var(--primary-red);
+  text-decoration: none;
+  font-weight: bold;
+  transition: opacity 0.3s ease;
+}
+
+.developer-link:hover {
+  opacity: 0.8;
+}
+
+/* Utilities (Hamburger, WhatsApp, Text Links) */
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1001;
+}
+
+.hamburger-line {
+  display: block;
+  width: 30px;
+  height: 3px;
+  margin: 6px 0;
+  background-color: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.menu-toggle.is-active .hamburger-line:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+.menu-toggle.is-active .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.is-active .hamburger-line:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+main p a, 
+main li a {
+  color: var(--primary-red);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 500;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+main p a:hover, 
+main li a:hover {
+  color: #a00000; 
+  opacity: 0.85;
+}
+
+.whatsapp-float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 40px;
+  right: 40px;
+  background-color: #25d366; 
+  color: #FFF;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 32px;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  color: #fff;
+}
+
+/* =========================================
+   SPLIT LAYOUT (Menu a sinistra, Slider a destra)
+   ========================================= */
+.split-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  align-items: center; /* Allinea testo e foto al centro verticalmente */
+  margin: 40px 0 60px 0;
+}
+
+.split-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.split-media {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  justify-content: center; /* Centra lo slider nella sua colonna */
+}
+
+/* =========================================
+   SLIDER FOTO VERTICALI (3:4)
+   ========================================= */
+.vertical-slider-container {
+  position: relative;
+  width: 100%;
+  max-width: 380px; /* Limita la larghezza per mantenere un'altezza elegante */
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+.vertical-slider {
+  display: flex;
+  transition: transform 0.4s ease-in-out;
+}
+
+.slide {
+  min-width: 100%;
+  aspect-ratio: 4 / 5; /* Abbassa leggermente l'altezza */
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  cursor: pointer;
+}
+
+/* Controlli Slider (Frecce e Pallini) */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  z-index: 10;
+}
+
+.slider-btn:hover { background-color: var(--primary-red); }
+.prev-btn { left: 15px; }
+.next-btn { right: 15px; }
+
+/* Aggiungi queste nuove regole in fondo al file, sotto .lightbox-close */
+.lightbox-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: background-color 0.3s ease;
+  z-index: 2001;
+}
+
+.lightbox-btn:hover {
+  background-color: var(--primary-red);
+}
+
+#lb-prev { left: 20px; }
+#lb-next { right: 20px; }
+
+.slider-dots {
+  position: absolute;
+  bottom: 15px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  z-index: 10;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active { background-color: var(--primary-red); }
+
+/* =========================================
+   LIGHTBOX (Effetto Schermo Intero)
+   ========================================= */
+.lightbox {
+  display: none; /* Nascosto di default */
+  position: fixed;
+  z-index: 2000; /* Livello altissimo per coprire anche l'header */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85); /* Sfondo scuro semitrasparente */
+  backdrop-filter: blur(5px); /* Bellissimo effetto sfocato per lo sfondo */
+  overflow: auto;
+}
+
+.lightbox-content {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 85vh; /* Non supera mai l'85% dell'altezza dello schermo */
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%); /* Centra l'immagine verticalmente */
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  animation: zoomIn 0.3s ease;
+}
+
+@keyframes zoomIn {
+  from { transform: translateY(-50%) scale(0.95); opacity: 0; }
+  to { transform: translateY(-50%) scale(1); opacity: 1; }
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+  cursor: pointer;
+  z-index: 2001;
+}
+
+.lightbox-close:hover,
+.lightbox-close:focus {
+  color: var(--primary-red);
+}
+
+/* =========================================
+   CONTENITORE VIDEO SOCIAL (Our Story)
+   ========================================= */
+.social-embed-container {
+  display: flex;
+  justify-content: center;
+  margin: 50px 0;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+  .copyright-string {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .footer-divider {
+    display: none;
+  }
+  
+  .header-inner {
+    flex-direction: row; 
+    justify-content: space-between;
+    flex-wrap: wrap; 
+  }
+
+  .menu-toggle {
+    display: block; 
+  }
+
+  .main-nav {
+    display: none; 
+    position: absolute; 
+    top: 100%; 
+    left: 0;
+    width: 100%;
+    background-color: var(--header-bg); 
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    box-shadow: 0 10px 15px rgba(0,0,0,0.4); 
+    z-index: 999;
+  }
+  
+  .main-nav.is-open {
+    display: block; 
+  }
+
+  .main-nav .nav-list {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .site-logo img {
+    max-height: 60px;
+  }
+
+  .header-socials {
+    margin-left: 0;
+    padding-left: 0;
+    border-left: none; 
+    justify-content: center; 
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #333; 
+  }
+  
+  .header-socials a {
+    font-size: 1.5rem; 
+  }
+
+  .hero {
+    padding: 60px 20px 100px; 
+  }
+  
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+  
+  .hero p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+  }
+
+  .page-container h1 {
+    font-size: 2rem;
+  }
+  
+  .home-section h2, 
+  .dietary-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .home-section, 
+  .dietary-section,
+  .page-container {
+    padding: 40px 20px;
+    margin: 20px auto;
+  }
+
+  .two-cols {
+    margin-top: 30px;
+    gap: 20px;
+  }
+
+  .col {
+    min-width: 100%;
+    padding: 25px;
+  }
+
+  .dietary-icons {
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+  
+  .diet-icon .icon-circle {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+  
+  .diet-icon {
+    font-size: 0.75rem;
+  }
+  
+  .btn, .btn-dark {
+    padding: 12px 25px;
+    font-size: 0.9rem;
+  }
+}

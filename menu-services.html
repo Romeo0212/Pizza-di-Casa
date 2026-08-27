@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu & Services | Pizza di Casa</title>
+    <link rel="icon" type="image/svg+xml" href="media/logo_pizza.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="header-inner">
+        <div class="site-logo">
+            <a href="./"><img src="media/logo_pizza.png" alt="Pizza di Casa Logo"></a>
+        </div>
+        <button class="menu-toggle" aria-expanded="false" aria-label="Menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+        <nav class="main-nav">
+            <ul class="nav-list">
+                <li><a href="./">Home</a></li>
+                <li><a href="our-story">Our Story</a></li>
+                <li><span class="active-link">Menu & Services</span></li>
+            </ul>
+            <div class="header-socials">
+                <a href="https://www.instagram.com/pizza.di.casa.1/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@pizza.di.casa.1" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<main class="page-container">
+    <h1>Menu & Services</h1>
+    
+    <!-- LAYOUT DIVISO: TESTO A SINISTRA, SLIDER A DESTRA -->
+    <div class="split-layout">
+        
+        <!-- Colonna Testo -->
+        <div class="split-text">
+            <h2>Our Menu</h2>
+            <ul>
+                <li><strong>Margherita</strong> &ndash; San Marzano tomato sauce, fior di latte mozzarella, fresh basil, and extra virgin olive oil.</li>
+                <li><strong>Pizza al Portafoglio (Wallet Pizza)</strong> &ndash; The original folded pizza from Italy. Simple, authentic, and made to go.</li>
+                <li><strong>Nutella Pizza</strong> &ndash; For the sweet tooth! A warm pizza base smothered in rich Nutella.</li>
+                <li><strong>Vegetarian & Vegan Options</strong> &ndash; Fresh seasonal vegetables and dairy-free alternatives available.</li>
+                <li><strong>Drinks</strong> &ndash; A selection of soft drinks and water.</li>
+            </ul>
+            <p><em>...and more! Ask us about special toppings or off-menu requests based on seasonal ingredients.</em></p>
+        </div>
+
+        <!-- Colonna Slider -->
+        <div class="split-media">
+            <div class="vertical-slider-container">
+                <div class="vertical-slider" id="verticalSlider">
+                    <!-- Sostituisci con le tue immagini 3:4 -->
+                    <div class="slide"><img src="media/slider-1.jpg" alt="Pizza Margherita"></div>
+                    <div class="slide"><img src="media/slider-2.jpg" alt="Pizza al Portafoglio"></div>
+                    <div class="slide"><img src="media/slider-3.jpg" alt="Pizza Nutella"></div>
+                </div>
+                
+                <button class="slider-btn prev-btn" id="prevBtn" aria-label="Previous Slide"><i class="fa-solid fa-chevron-left"></i></button>
+                <button class="slider-btn next-btn" id="nextBtn" aria-label="Next Slide"><i class="fa-solid fa-chevron-right"></i></button>
+                
+                <div class="slider-dots">
+                    <span class="dot active" data-index="0"></span>
+                    <span class="dot" data-index="1"></span>
+                    <span class="dot" data-index="2"></span>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <!-- FINE LAYOUT DIVISO -->
+
+    <h2>Where to find us</h2>
+    <p>We regularly pitch our stall at the <strong>Gloucester Green Market in Oxford</strong> and the <strong>Oxford Outdoor Market</strong>. Check our Instagram <a href="https://www.instagram.com/pizza.di.casa.1/" target="_blank">@pizza.di.casa.1</a> for our weekly schedule and exclusive discounts!</p>
+
+    <h2>Private Events & Catering</h2>
+    <p>Want the authentic taste of Italy at your next party? We cater for:</p>
+    <ul>
+        <li>Birthdays & Private Parties</li>
+        <li>Weddings</li>
+        <li>Corporate Events</li>
+    </ul>
+    <p>We bring the setup, the oven, and the passion. Pricing is custom based on the number of guests and location. Send us a message on Instagram or click the WhatsApp button to get a personalized quote!</p>
+    
+    <div class="center-cta">
+        <a href="mailto:tuaemail@esempio.com" class="btn-dark">EMAIL US FOR CATERING</a>
+    </div>
+    
+</main>
+
+<footer class="site-footer">
+    <div class="footer-main">
+    
+        <!-- Colonna 1: Info e Social -->
+        <div class="footer-col">
+            <h3>Pizza di Casa</h3>
+            <p>Made the Italian way. Served with passion. <i class="fa-solid fa-heart red"></i></p>
+            <p>Operated by Ajmain | Oxford/London, UK</p>
+            <div class="footer-socials">
+                <a href="https://www.instagram.com/pizza.di.casa.1/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@pizza.di.casa.1" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+        </div>
+
+        <!-- Colonna 2: Contatti -->
+        <div class="footer-col">
+            <h3>Contact Us</h3>
+            <p class="footer-contact-text">Want to book us for an event?</p>
+            <a href="mailto:tuaemail@esempio.com" class="btn-outline btn-small">Email Us</a>
+        </div>
+
+        <!-- Colonna 3: Links Legali -->
+        <div class="footer-col">
+            <h3>Legal</h3>
+            <ul class="footer-legal-list">
+                <li><a href="privacy-policy" class="footer-legal-link">Privacy Policy</a></li>
+                <li><a href="cookie-policy" class="footer-legal-link">Cookie Policy</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- Barra inferiore con i diritti -->
+    <div class="footer-bottom">
+        <p class="copyright-string">
+            <span class="copy-block">&copy; 2026 Pizza di Casa.</span>
+            <span class="copy-block">All rights reserved.</span>
+            <span class="footer-divider">|</span>
+            <span class="copy-block">Web Development: <a href="https://romeo0212.github.io/landing-page/" target="_blank" rel="noopener nofollow" class="developer-link">Romeo Calearo</a></span>
+        </p>
+    </div>
+</footer>
+
+<a href="https://wa.me/447550865059" class="whatsapp-float" target="_blank" aria-label="Chat with us on WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<!-- STRUTTURA LIGHTBOX CON NAVIGAZIONE -->
+<div id="lightbox" class="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <button class="lightbox-btn" id="lb-prev" aria-label="Precedente"><i class="fa-solid fa-chevron-left"></i></button>
+    <img class="lightbox-content" id="lightbox-img" alt="Immagine ingrandita">
+    <button class="lightbox-btn" id="lb-next" aria-label="Successiva"><i class="fa-solid fa-chevron-right"></i></button>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
