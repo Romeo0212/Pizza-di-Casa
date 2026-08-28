@@ -740,11 +740,24 @@ main li a:hover {
 .social-embed-container {
   display: flex;
   justify-content: center;
-  margin: 50px 0;
+  margin: 50px auto;
   width: 100%;
-  overflow: hidden;
-  border-radius: 12px;
+  max-width: 450px; /* Larghezza ideale per un singolo Reel */
 }
+
+/* Forza i blocchi incorporati (sia TikTok che Instagram) a rimuovere bordi bianchi, sfondi ed ombre esterne */
+.social-embed-container blockquote.tiktok-embed,
+.social-embed-container iframe,
+.social-embed-container blockquote.instagram-media {
+  background: transparent !important;
+  border: none !important;
+  margin: 0 !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
+  border-radius: 12px !important;
+  width: 100% !important;
+  min-width: auto !important; /* Disabilita i min-width forzati di Instagram su mobile */
+}
+
 
 /* Mobile */
 @media screen and (max-width: 768px) {
