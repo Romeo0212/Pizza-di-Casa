@@ -66,6 +66,10 @@ h1, h2, h3 {
   color: var(--primary-red);
 }
 
+h2.h2-menu {
+    margin-top: 15px;
+}
+
 /* Header & Navigation */
 .site-header {
   background-color: var(--header-bg);
