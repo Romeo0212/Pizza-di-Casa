@@ -237,7 +237,6 @@ h2.h2-menu {
 
 /* Dietary Section */
 .dietary-section {
-  background-color: #f9f9f9; /* Spostato dal CSS inline */
   padding: 60px 20px;
   text-align: center;
 }
@@ -295,6 +294,21 @@ h2.h2-menu {
   font-size: 2rem;
   color: #fff;
   font-weight: normal;
+  position: relative;
+  overflow: hidden;  
+}
+
+/* Stile per le immagini PNG personalizzate delle diete */
+.custom-diet-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  z-index: 2;
+  background-color: var(--bg-light);
 }
 
 /* Colori Icone */
@@ -302,7 +316,7 @@ h2.h2-menu {
 .icon-gluten { background-color: #f7b718; color: #1a1a1a; } 
 .icon-vegan { background-color: #8bc53f; color: #1a1a1a; } 
 .icon-veg { background-color: #39b54a; color: #ffffff; } 
-.icon-dairy { background-color: #006838; color: #ffffff; }
+.icon-dairy { background-color: #03A9F4; color: #ffffff; }
 
 /* Bottoni */
 .btn-dark {
@@ -895,5 +909,12 @@ main li a:hover {
   .slide {
     height: auto;
     aspect-ratio: 3 / 4;
+  }
+}
+
+/* Sotto i 470px: forza 3 icone sopra e 2 sotto centrate */
+@media screen and (max-width: 460px) {
+  .diet-icon {
+    flex: 0 0 calc(33.333% - 10px);
   }
 }
