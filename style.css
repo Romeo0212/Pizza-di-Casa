@@ -484,7 +484,7 @@ h2.h2-menu {
 }
 
 .developer-link {
-  color: var(--primary-red);
+  color: white;
   text-decoration: none;
   font-weight: bold;
   transition: opacity 0.3s ease;
