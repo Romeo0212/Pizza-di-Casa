@@ -605,7 +605,7 @@ main li a:hover {
 
 .slide {
   min-width: 100%;
-  aspect-ratio: 4 / 5; /* Abbassa leggermente l'altezza */
+  height: 475px; /* Altezza fissa su desktop, si restringe solo la larghezza */
 }
 
 .slide img {
@@ -881,5 +881,19 @@ main li a:hover {
   .btn, .btn-dark {
     padding: 12px 25px;
     font-size: 0.9rem;
+  }
+
+  /* Annulla il limite rigido di 300px su mobile */
+  .split-text, 
+  .split-media {
+    min-width: 100%;
+  }
+}
+
+/* Smartphone piccoli: lo slider si rimpicciolisce proporzionalmente */
+@media screen and (max-width: 450px) {
+  .slide {
+    height: auto;
+    aspect-ratio: 3 / 4;
   }
 }
