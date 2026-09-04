@@ -45,117 +45,143 @@
     </div>
 </header>
 
-<main class="page-container">
-    <h1>Menu & Services</h1>
-    
-    <!-- LAYOUT DIVISO: TESTO A SINISTRA, SLIDER A DESTRA -->
-    <div class="split-layout">
-        
-        <!-- Colonna Testo -->
-        <div class="split-text">
-            <h2 class="h2-menu">Our Menu</h2>
-            <ul>
-                <li><strong>Margherita</strong> &ndash; San Marzano tomato sauce, fior di latte mozzarella, fresh basil, and extra virgin olive oil.</li>
-                <li><strong>Pizza al Portafoglio (Wallet Pizza)</strong> &ndash; The original folded pizza from Italy. Simple, authentic, and made to go.</li>
-                <li><strong>Nutella Pizza</strong> &ndash; For the sweet tooth! A warm pizza base smothered in rich Nutella.</li>
-                <li><strong>Vegetarian & Vegan Options</strong> &ndash; Fresh seasonal vegetables and dairy-free alternatives available.</li>
-                <li><strong>Drinks</strong> &ndash; A selection of soft drinks and water.</li>
-            </ul>
-            <p><em>...and more! Ask us about special toppings or off-menu requests based on seasonal ingredients.</em></p>
-        </div>
-
-        <!-- Colonna Slider -->
-        <div class="split-media">
-            <div class="vertical-slider-container">
-                <div class="vertical-slider" id="verticalSlider">
-                    <!-- Sostituisci con le tue immagini 3:4 -->
-                    <div class="slide"><img src="media/slider-1.jpg" alt="Margherita pizza close-up with counter in background - photo 1"></div>
-                    <div class="slide"><img src="media/slider-2.jpg" alt="Pizza di Casa counter during an event"></div>
-                    <div class="slide"><img src="media/slider-3.jpg" alt="Freshly baked Margherita pizza"></div>
-                    <div class="slide"><img src="media/slider-4.jpg" alt="Pizza di Casa counter"></div>
-                    <div class="slide"><img src="media/slider-5.jpg" alt="Margherita pizza close-up with counter in background - photo 2"></div>
-                </div>
-                
-                <button class="slider-btn prev-btn" id="prevBtn" aria-label="Previous Slide"><i class="fa-solid fa-chevron-left"></i></button>
-                <button class="slider-btn next-btn" id="nextBtn" aria-label="Next Slide"><i class="fa-solid fa-chevron-right"></i></button>
-                
-                <div class="slider-dots">
-                    <span class="dot active" data-index="0"></span>
-                    <span class="dot" data-index="1"></span>
-                    <span class="dot" data-index="2"></span>
-                    <span class="dot" data-index="3"></span>
-                    <span class="dot" data-index="4"></span>
-                </div>
+<main>
+    <div class="page-container" style="padding-bottom: 0; margin-bottom: 0;">
+        <h1>Menu & Services</h1>
+    </div>
+    <!-- HOW IT WORKS SECTION -->
+    <section class="home-section">
+        <h2 class="menu-h2">How It Works</h2>
+        <div class="three-cols">
+            <div class="step-card">
+                <div class="step-num">01</div>
+                <h3>Get in touch</h3>
+                <p>Tell us your date, location, number of guests and event type.</p>
             </div>
-        </div>
-        
-    </div>
-    <!-- FINE LAYOUT DIVISO -->
-
-    <h2>Where to find us</h2>
-    <p>We regularly pitch our stall at the <strong>Gloucester Green Market in Oxford</strong> and the <strong>Oxford Outdoor Market</strong>. Check our Instagram <a href="https://www.instagram.com/pizza.di.casa.1/" target="_blank">@pizza.di.casa.1</a> for our weekly schedule and exclusive discounts!</p>
-
-    <h2>Private Events & Catering</h2>
-    <p>Want the authentic taste of Italy at your next party? We cater for:</p>
-    <ul>
-        <li>Birthdays & Private Parties</li>
-        <li>Weddings</li>
-        <li>Corporate Events</li>
-    </ul>
-    <p>We bring the setup, the oven, and the passion. Pricing is custom based on the number of guests and location. Send us a message on Instagram or click the WhatsApp button to get a personalized quote!</p>
-    
-    <div class="center-cta">
-        <a href="mailto:tuaemail@esempio.com" class="btn-dark">EMAIL US FOR CATERING</a>
-    </div>
-
-    <section class="dietary-section">
-        <div class="dietary-content">
-            <h2>Something for <span class="underline">Everyone</span> at Your Event</h2>
-            
-            <p>Planning a private party, wedding, or corporate gathering? We believe that dietary requirements should never mean a compromise on taste or experience.</p>
-            <p class="dietary-intro-spacing">Let us know your guests' needs in advance, and we will make sure everyone can enjoy a truly authentic, inclusive Italian slice.</p>
-            
-            <div class="dietary-icons">
-                <div class="diet-icon">
-                    <div class="icon-circle icon-halal">
-                        <i class="fa-solid fa-moon" aria-hidden="true"></i>
-                        <img src="media/icon-halal.png" alt="" class="custom-diet-img" onload="this.previousElementSibling.style.display='none'" onerror="this.style.display='none'">
-                    </div>
-                    <span>Halal</span>
-                </div>
-                <div class="diet-icon">
-                    <div class="icon-circle icon-gluten">
-                        <i class="fa-solid fa-wheat-awn-circle-exclamation" aria-hidden="true"></i>
-                        <img src="media/icon-gluten-free.png" alt="" class="custom-diet-img" onload="this.previousElementSibling.style.display='none'" onerror="this.style.display='none'">
-                    </div>
-                    <span>No Gluten</span>
-                </div>
-                <div class="diet-icon">
-                    <div class="icon-circle icon-vegan">
-                        <i class="fa-solid fa-seedling" aria-hidden="true"></i>
-                        <img src="media/icon-vegan.png" alt="" class="custom-diet-img" onload="this.previousElementSibling.style.display='none'" onerror="this.style.display='none'">
-                    </div>
-                    <span>Vegan</span>
-                </div>
-                <div class="diet-icon">
-                    <div class="icon-circle icon-veg">
-                        <i class="fa-solid fa-carrot" aria-hidden="true"></i>
-                        <!-- Assicurati che il nome del file qui sotto coincida con quello che hai creato -->
-                        <img src="media/icon-vegetarian.png" alt="" class="custom-diet-img" onload="this.previousElementSibling.style.display='none'" onerror="this.style.display='none'">
-                    </div>
-                    <span>Vegetarian</span>
-                </div>
-                <div class="diet-icon">
-                    <div class="icon-circle icon-dairy">
-                        <i class="fa-solid fa-glass-water" aria-hidden="true"></i>
-                        <img src="media/icon-dairy-free.png" alt="" class="custom-diet-img" onload="this.previousElementSibling.style.display='none'" onerror="this.style.display='none'">
-                    </div>
-                    <span>Dairy Free</span>
-                </div>
+            <div class="step-card">
+                <div class="step-num">02</div>
+                <h3>Choose your menu</h3>
+                <p>We’ll help you choose the pizzas and package that works best for your event.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">03</div>
+                <h3>We bring the pizza</h3>
+                <p>We arrive, set up and cook fresh pizzas for your guests.</p>
             </div>
         </div>
     </section>
-    
+
+    <!-- MENU CARD SECTION -->
+    <section class="page-container center-text">
+        <h2 class="menu-h2">Our Menu</h2>
+        <div class="menu-card">
+            <!-- I 4 angoli decorativi SVG -->
+            <div class="menu-corner corner-tl"></div>
+            <div class="menu-corner corner-tr"></div>
+            <div class="menu-corner corner-bl"></div>
+            <div class="menu-corner corner-br"></div>
+
+            <div class="menu-card-inner">
+                
+                <div class="menu-title-img">
+                    <img src="media/scritta.png" alt="Pizza di Casa">
+                </div>
+
+                <div class="menu-intro">
+                    <p>Take a look at our menu and enjoy our classic Italian-style pizzas, freshly made for every event.</p>
+                </div>
+
+                <!-- DIETARY ICONS ROW -->
+                <div class="menu-dietary-row">
+                    <div class="menu-diet-box">
+                        <img src="media/icon-halal.png" alt="" class="menu-small-icon">
+                        <p><strong>WE SERVE HALAL</strong><br>All our meat options are halal.</p>
+                    </div>
+                    <div class="menu-diet-box">
+                        <div class="mini-icons-group">
+                            <img src="media/icon-gluten-free.png" alt="">
+                            <img src="media/icon-vegan.png" alt="">
+                            <img src="media/icon-vegetarian.png" alt="">
+                        </div>
+                        <p><strong>WE CAN ACCOMMODATE</strong><br>Gluten Free, Vegan and Vegetarian options.</p>
+                    </div>
+                </div>
+                
+                <div class="menu-intro">
+                    <p>We can also offer a variety of other pizza options and create a menu based on your requests and event needs.</p>
+                </div>
+
+                <!-- PIZZA: MARGHERITA -->
+                <div class="menu-item">
+                    <h3 class="pizza-title"><span>~</span> MARGHERITA <span>~</span></h3>
+                    <div class="pizza-ingredients">
+                        <div class="lang-col">
+                            <img src="https://flagcdn.com/w40/it.png" alt="ITA" class="lang-flag">
+                            <p>Salsa di pomodoro, fior di latte mozzarella, basilico fresco, olio extra vergine di oliva</p>
+                        </div>
+                        <div class="vert-line"></div>
+                        <div class="lang-col">
+                            <img src="https://flagcdn.com/w40/gb.png" alt="UK" class="lang-flag">
+                            <p>Tomato sauce, fior di latte mozzarella, fresh basil, extra virgin olive oil</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PIZZA: DIAVOLA -->
+                <div class="menu-item">
+                    <h3 class="pizza-title"><span>~</span> DIAVOLA <span>~</span></h3>
+                    <div class="pizza-ingredients">
+                        <div class="lang-col">
+                            <img src="https://flagcdn.com/w40/it.png" alt="ITA" class="lang-flag">
+                            <p>Salsa di pomodoro, fior di latte mozzarella, peperoni</p>
+                        </div>
+                        <div class="vert-line"></div>
+                        <div class="lang-col">
+                            <img src="https://flagcdn.com/w40/gb.png" alt="UK" class="lang-flag">
+                            <p>Tomato sauce, fior di latte mozzarella, peperoni</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PIZZA: FUNGHI -->
+                <div class="menu-item">
+                    <h3 class="pizza-title"><span>~</span> FUNGHI <span>~</span></h3>
+                    <div class="pizza-ingredients">
+                        <div class="lang-col">
+                            <img src="https://flagcdn.com/w40/it.png" alt="ITA" class="lang-flag">
+                            <p>Salsa di pomodoro, fior di latte mozzarella, funghi, olio all'aglio, olio al tartufo</p>
+                        </div>
+                        <div class="vert-line"></div>
+                        <div class="lang-col">
+                            <img src="https://flagcdn.com/w40/gb.png" alt="UK" class="lang-flag">
+                            <p>Tomato sauce, fior di latte mozzarella, mushrooms, garlic butter, truffle oil</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PIZZA: TONNO E CIPOLLA -->
+                <div class="menu-item">
+                    <h3 class="pizza-title"><span>~</span> TONNO E CIPOLLA <span>~</span></h3>
+                    <div class="pizza-ingredients">
+                        <div class="lang-col">
+                            <img src="https://flagcdn.com/w40/it.png" alt="ITA" class="lang-flag">
+                            <p>Salsa di pomodoro, fior di latte mozzarella, tonno, cipolla</p>
+                        </div>
+                        <div class="vert-line"></div>
+                        <div class="lang-col">
+                            <img src="https://flagcdn.com/w40/gb.png" alt="UK" class="lang-flag">
+                            <p>Tomato sauce, fior di latte mozzarella, tuna, red onion</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="center-cta" style="margin-top: 40px;">
+                    <a href="mailto:tuaemail@esempio.com" class="btn-dark">Discuss your requirements</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
 </main>
 
 <footer class="site-footer">
@@ -204,14 +230,6 @@
 <a href="https://wa.me/447550865059" class="whatsapp-float" target="_blank" aria-label="Chat with us on WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
 </a>
-
-<!-- STRUTTURA LIGHTBOX CON NAVIGAZIONE -->
-<div id="lightbox" class="lightbox">
-    <span class="lightbox-close">&times;</span>
-    <button class="lightbox-btn" id="lb-prev" aria-label="Precedente"><i class="fa-solid fa-chevron-left"></i></button>
-    <img class="lightbox-content" id="lightbox-img" alt="Immagine ingrandita">
-    <button class="lightbox-btn" id="lb-next" aria-label="Successiva"><i class="fa-solid fa-chevron-right"></i></button>
-</div>
 
 <script src="script.js"></script>
 

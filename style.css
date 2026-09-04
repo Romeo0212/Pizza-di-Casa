@@ -30,6 +30,10 @@ body {
   color: var(--primary-red);
 }
 
+.center-text {
+  text-align: center;
+}
+
 main {
   flex-grow: 1; 
 }
@@ -203,16 +207,20 @@ h2.h2-menu {
 
 /* Sezioni Home Page */
 .home-section {
-  padding: 80px 20px;
+  padding: 20px 20px;
   max-width: 1100px;
   margin: 0 auto;
   text-align: center;
 }
 
-.home-section h2 {
+h2.menu-h2, .home-section h2 {
   font-size: 2.5rem;
   color: var(--primary-red);
   margin-bottom: 20px;
+}
+
+h2.menu-h2 {
+  margin-top: 20px;
 }
 
 
@@ -552,6 +560,266 @@ main li a:hover {
   opacity: 0.85;
 }
 
+
+/* =========================================
+   HOW IT WORKS (3 Steps)
+   ========================================= */
+.three-cols {
+  display: flex;
+  gap: 30px; /* Meglio i pixel fissi per evitare conflitti quando flex restringe le card */
+  margin-top: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.step-card {
+  /* 1 (cresce per riempire), 1 (si restringe se manca spazio), 250px (dimensione ideale di partenza) */
+  flex: 1 1 250px; 
+  max-width: 450px; /* Il tuo limite per evitare l'effetto "card gigante" */
+  text-align: center;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 1px solid var(--primary-red);
+  border-bottom: 5px solid var(--primary-red);
+}
+
+.step-num {
+  font-family: 'Georgia', serif;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--primary-red);
+  margin-bottom: 10px;
+  display: inline-block;
+  border-bottom: 2px solid var(--primary-red);
+  padding-bottom: 5px;
+}
+
+.step-card h3 {
+  font-size: 1.4rem;
+  color: var(--primary-red);
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================================
+   VINTAGE MENU CARD
+   ========================================= */
+.menu-card {
+  background-color: var(--bg-light);
+  border: 4px solid var(--primary-red);
+  padding: 8px;
+  margin: 40px auto;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+.menu-card-inner {
+  border: 1px solid var(--primary-red);
+  padding: 50px 30px;
+  text-align: center;
+}
+
+.menu-intro {
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+  color: var(--text-dark);
+}
+
+.menu-divider {
+  color: var(--primary-red);
+  font-size: 1.5rem;
+  margin: 30px 0;
+}
+
+.menu-dietary-row {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  border: 1px solid var(--primary-red);
+  border-radius: 20px;
+  padding: 20px 0;
+  margin-bottom: 40px;
+}
+
+.menu-diet-box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-align: left;
+  max-width: 300px;
+}
+
+.menu-diet-box p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.menu-diet-box strong {
+  color: var(--primary-red);
+}
+
+.menu-small-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.mini-icons-group {
+  display: flex;
+  gap: 5px;
+}
+
+.mini-icons-group img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+/* Elementi delle singole pizze */
+.menu-item {
+  margin-bottom: 40px;
+}
+
+.pizza-title {
+  color: var(--primary-red);
+  font-size: 2rem;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  letter-spacing: 2px;
+}
+
+.pizza-title span {
+  font-size: 1.2rem;
+  vertical-align: middle;
+}
+
+.pizza-ingredients {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  align-items: stretch;
+}
+
+.lang-col {
+  flex: 1;
+  display: flex;
+  gap: 10px;
+  text-align: left;
+}
+
+/* Colonna IT allineata a destra come nel volantino */
+.lang-col:first-child {
+  text-align: right;
+  flex-direction: row-reverse;
+}
+
+.lang-col p {
+  margin: 0;
+  font-size: 1rem;
+  font-style: italic;
+  color: #444;
+}
+
+.vert-line {
+  width: 1px;
+  background-color: var(--primary-red);
+}
+
+/* Titolo Immagine Menù */
+.menu-title-img {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.menu-title-img img {
+  max-width: 100%;
+  height: auto;
+  width: 350px; /* Regola in base a quanto vuoi che sia grande il logo */
+}
+
+/* Bandierine Immagine */
+.lang-flag {
+  width: 24px;
+  height: 18px;
+  object-fit: cover;
+  border-radius: 2px;
+  margin-top: 4px;
+}
+
+/* Angoli Decorativi Vintage */
+.menu-card {
+  background-color: var(--bg-light); /* Usa il tuo panna */
+  border: 4px solid var(--primary-red);
+  padding: 8px;
+  margin: 40px auto;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+  position: relative; /* Fondamentale per posizionare gli angoli */
+}
+
+.menu-corner {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-image: url('media/corner-ornament.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 5;
+}
+
+.corner-tl { top: 12px; left: 12px; }
+.corner-tr { top: 12px; right: 12px; transform: scaleX(-1); }
+.corner-bl { bottom: 12px; left: 12px; transform: scaleY(-1); }
+.corner-br { bottom: 12px; right: 12px; transform: scale(-1, -1); }
+
+.fi {
+  font-size: 1.2rem;
+  border-radius: 2px;
+  margin-top: 3px;
+}
+
+
+/* Adattamenti per Mobile */
+@media screen and (max-width: 600px) {
+  .pizza-ingredients {
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+  
+  /* Annulla il reverse dell'italiano e mette le bandiere di fianco al testo */
+  .lang-col, 
+  .lang-col:first-child {
+    flex-direction: row;
+    text-align: left;
+    align-items: flex-start;
+    max-width: 300px;
+  }
+
+  .lang-col p {
+    font-size: 0.95rem; /* Testo leggermente ridotto per recuperare spazio */
+  }
+
+  /* Nasconde la linea orizzontale su mobile per compattare la lettura */
+  .vert-line {
+    display: none;
+  }
+
+  /* Riquadro diete compatto */
+  .menu-dietary-row {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .menu-diet-box {
+    text-align: center;
+    flex-direction: column; /* Mantiene l'icona a sinistra del testo */
+  }
+}
+
+
+
 .whatsapp-float {
   position: fixed;
   width: 60px;
@@ -583,9 +851,8 @@ main li a:hover {
 .split-layout {
   display: flex;
   flex-wrap: wrap;
-  gap: 50px;
-  align-items: center; /* Allinea testo e foto al centro verticalmente */
-  margin: 40px 0 60px 0;
+  gap: 20px;
+  align-items: center;
 }
 
 .split-text {
@@ -619,7 +886,7 @@ main li a:hover {
 
 .slide {
   min-width: 100%;
-  height: 475px; /* Altezza fissa su desktop, si restringe solo la larghezza */
+  height: 410px; /* Altezza fissa su desktop, si restringe solo la larghezza */
 }
 
 .slide img {
@@ -681,25 +948,29 @@ main li a:hover {
 #lb-next { right: 20px; }
 
 .slider-dots {
-  position: absolute;
-  bottom: 15px;
-  width: 100%;
   display: flex;
   justify-content: center;
-  gap: 8px;
-  z-index: 10;
+  gap: 10px;
+  margin-top: 15px; /* Spazio tra la foto e i pallini */
+  width: 100%;
 }
 
 .dot {
-  width: 10px;
-  height: 10px;
-  background-color: rgba(255, 255, 255, 0.5);
+  width: 12px;
+  height: 12px;
+  background-color: #d1d1d1; /* Grigio chiaro per risaltare sul bianco/panna */
   border-radius: 50%;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.dot.active { background-color: var(--primary-red); }
+.dot:hover {
+  transform: scale(1.2);
+}
+
+.dot.active { 
+  background-color: var(--primary-red); 
+}
 
 /* =========================================
    LIGHTBOX (Effetto Schermo Intero)
@@ -776,6 +1047,70 @@ main li a:hover {
   min-width: auto !important; /* Disabilita i min-width forzati di Instagram su mobile */
 }
 
+/* =========================================
+   ABOUT SECTION (Home)
+   ========================================= */
+.about-section {
+  max-width: 1000px;
+}
+
+.about-split {
+  text-align: left;
+  margin-top: 40px;
+  justify-content: center; /* Centra orizzontalmente i due blocchi nello schermo */
+}
+
+/* Controlla la larghezza per bilanciare le altezze */
+.about-media {
+  flex: 0 1 350px; 
+}
+
+.about-text {
+  flex: 0 1 480px; 
+}
+
+/* Stile pulito per l'immagine */
+.about-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.about-desc {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.intro-quote {
+  max-width: 800px;
+  margin: 0 auto 20px;
+  font-family: 'Georgia', serif;
+  font-size: 1.4rem;
+  font-style: italic;
+  color: var(--primary-red);
+  line-height: 1.5;
+}
+
+/* Adattamento per tablet e schermi medi (mantiene 2 colonne) */
+@media screen and (min-width: 769px) and (max-width: 950px) {
+  .about-media {
+    flex: 0 1 240px; /* Rimpicciolisce l'immagine */
+  }
+  .about-text {
+    flex: 1 1 350px; /* Restringe il contenitore del testo */
+  }
+  .intro-quote {
+    font-size: 1.25rem; /* Riduce la citazione per evitare che si allunghi troppo in verticale */
+    margin-bottom: 15px;
+  }
+  .about-desc {
+    font-size: 1rem;
+  }
+}
 
 /* Mobile */
 @media screen and (max-width: 768px) {
@@ -855,7 +1190,7 @@ main li a:hover {
     font-size: 2rem;
   }
   
-  .home-section h2, 
+  h2.menu-h2, .home-section h2, 
   .dietary-content h2 {
     font-size: 1.8rem;
   }
@@ -875,6 +1210,11 @@ main li a:hover {
   .col {
     min-width: 100%;
     padding: 25px;
+  }
+
+  .split-text, 
+  .split-media {
+    min-width: 100%;
   }
 
   .dietary-icons {
@@ -902,6 +1242,33 @@ main li a:hover {
   .split-media {
     min-width: 100%;
   }
+
+  .pizza-title {
+    font-size: 1.4rem; /* Rimpicciolisce il testo della pizza */
+    letter-spacing: 1px; /* Riduce lo spazio tra le lettere per far stare parole lunghe */
+    display: flex; /* Trasforma il titolo in un contenitore flessibile */
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Forza uno spazio fisso tra i ~ e la parola, impedendo l'a capo */
+  }
+
+  .pizza-title span {
+    font-size: 1rem; /* Rimpicciolisce proporzionalmente anche i ~ */
+  }
+
+  .about-media {
+    flex: 1 1 100%;
+    margin: 0 auto 20px auto; /* Centra l'immagine orizzontalmente e crea spazio sotto */
+  }
+
+  .about-img {
+    max-width: 350px; /* Impedisce all'immagine di esplodere a tutto schermo */
+  }
+
+  .about-text {
+    flex: 1 1 100%;
+    text-align: center; /* Opzionale, ma su mobile il testo centrato è solitamente più bilanciato se l'immagine sopra è centrata */
+  }
 }
 
 /* Smartphone piccoli: lo slider si rimpicciolisce proporzionalmente */
@@ -910,11 +1277,16 @@ main li a:hover {
     height: auto;
     aspect-ratio: 3 / 4;
   }
+
+  /* Extra per la citazione in About Section, per evitare che diventi troppo grande su schermi piccoli */
+  .intro-quote {
+    font-size: 1.25rem;
+  }
 }
 
-/* Sotto i 470px: forza 3 icone sopra e 2 sotto centrate */
-@media screen and (max-width: 460px) {
+/* Sotto i 370px: forza 2 icone sopra e 2 sotto centrate */
+@media screen and (max-width: 370px) {
   .diet-icon {
-    flex: 0 0 calc(33.333% - 10px);
+    flex: 0 0 calc(50% - 15px); 
   }
 }

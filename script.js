@@ -12,31 +12,57 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // 2. SLIDER FOTO VERTICALI
-    const slider = document.getElementById('verticalSlider');
-    const dots = document.querySelectorAll('.dot');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
+    const slider = document.getElementById('slider');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    const dotsContainer = document.getElementById('slider-dots');
     
     if (slider) {
         let currentIndex = 0;
-        const totalSlides = document.querySelectorAll('.slide').length;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
 
-        function updateSlider() {
-            slider.style.transform = `translateX(-${currentIndex * 100}%)`;
-            dots.forEach(dot => dot.classList.remove('active'));
-            dots[currentIndex].classList.add('active');
+        // Genera i pallini dinamicamente in base al numero di foto
+        if (dotsContainer) {
+            dotsContainer.innerHTML = ''; 
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                if (i === 0) dot.classList.add('active'); 
+                dot.setAttribute('data-index', i);
+                dotsContainer.appendChild(dot);
+            }
         }
 
-        nextBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % totalSlides;
-            updateSlider();
-        });
+        const dots = document.querySelectorAll('.dot');
 
-        prevBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-            updateSlider();
-        });
+        function updateSlider() {
+            // Sposta le immagini
+            slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+            // Aggiorna il colore del pallino
+            dots.forEach(dot => dot.classList.remove('active'));
+            if(dots[currentIndex]) {
+                dots[currentIndex].classList.add('active');
+            }
+        }
 
+        // Click sulla freccia destra
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % totalSlides;
+                updateSlider();
+            });
+        }
+
+        // Click sulla freccia sinistra
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+                updateSlider();
+            });
+        }
+
+        // Click diretto sui pallini
         dots.forEach(dot => {
             dot.addEventListener('click', (e) => {
                 currentIndex = parseInt(e.target.getAttribute('data-index'));
