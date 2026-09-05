@@ -360,7 +360,6 @@ h2.menu-h2 {
   text-transform: uppercase;
   border: 2px solid var(--primary-red);
   transition: background 0.3s, color 0.3s, transform 0.2s;
-  margin-top: 15px; 
 }
 
 .btn-outline:hover {
@@ -1048,6 +1047,29 @@ main li a:hover {
 }
 
 /* =========================================
+   CALL TO ACTION BUTTONS
+   ========================================= */
+/* Versione Desktop: affiancati e centrati */
+.cta-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+/* Versione Mobile: incolonnati e larghi uguali */
+@media screen and (max-width: 768px) {
+  .cta-buttons {
+    flex-direction: column;
+    align-items: stretch; /* Forza il bottone corto ad allargarsi */
+    width: max-content; /* Il contenitore prende la larghezza del bottone con più testo */
+    margin-left: auto; /* Centra il contenitore nella pagina */
+    margin-right: auto;
+  }
+}
+
+/* =========================================
    ABOUT SECTION (Home)
    ========================================= */
 .about-section {
@@ -1062,11 +1084,13 @@ main li a:hover {
 
 /* Controlla la larghezza per bilanciare le altezze */
 .about-media {
-  flex: 0 1 350px; 
+  /*flex: 0 1 350px; */
+  flex: 1;
 }
 
 .about-text {
-  flex: 0 1 480px; 
+  /*flex: 0 1 480px; */
+  flex: 1.2;
 }
 
 /* Stile pulito per l'immagine */
@@ -1082,14 +1106,15 @@ main li a:hover {
 .about-desc {
   font-size: 1.1rem;
   color: #555;
-  margin-bottom: 30px;
+  /*margin-bottom: 30px;*/
+  margin-bottom: 0px;
 }
 
 .intro-quote {
   max-width: 800px;
-  margin: 0 auto 20px;
+  margin: 0 auto 0;
   font-family: 'Georgia', serif;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-style: italic;
   color: var(--primary-red);
   line-height: 1.5;
@@ -1097,15 +1122,14 @@ main li a:hover {
 
 /* Adattamento per tablet e schermi medi (mantiene 2 colonne) */
 @media screen and (min-width: 769px) and (max-width: 950px) {
-  .about-media {
-    flex: 0 1 240px; /* Rimpicciolisce l'immagine */
+  /*.about-media {
+    flex: 0 1 240px; 
   }
   .about-text {
-    flex: 1 1 350px; /* Restringe il contenitore del testo */
-  }
+    flex: 1 1 350px; 
+  }*/
   .intro-quote {
     font-size: 1.25rem; /* Riduce la citazione per evitare che si allunghi troppo in verticale */
-    margin-bottom: 15px;
   }
   .about-desc {
     font-size: 1rem;
@@ -1198,7 +1222,7 @@ main li a:hover {
   .home-section, 
   .dietary-section,
   .page-container {
-    padding: 40px 20px;
+    padding: 20px 20px;
     margin: 20px auto;
   }
 
@@ -1232,7 +1256,7 @@ main li a:hover {
     font-size: 0.75rem;
   }
   
-  .btn, .btn-dark {
+  .btn, .btn-dark, .btn-outline {
     padding: 12px 25px;
     font-size: 0.9rem;
   }
@@ -1259,6 +1283,8 @@ main li a:hover {
   .about-media {
     flex: 1 1 100%;
     margin: 0 auto 20px auto; /* Centra l'immagine orizzontalmente e crea spazio sotto */
+    max-width: 500px; /* Impedisce all'immagine di esplodere a tutto schermo */
+    min-width: 0;
   }
 
   .about-img {
@@ -1268,6 +1294,10 @@ main li a:hover {
   .about-text {
     flex: 1 1 100%;
     text-align: center; /* Opzionale, ma su mobile il testo centrato è solitamente più bilanciato se l'immagine sopra è centrata */
+  }
+
+  .step-card {
+    padding: 12px;
   }
 }
 
@@ -1290,3 +1320,6 @@ main li a:hover {
     flex: 0 0 calc(50% - 15px); 
   }
 }
+
+
+

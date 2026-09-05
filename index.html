@@ -60,21 +60,29 @@
         <h2>About Pizza di Casa</h2>
         
         <div class="split-layout about-split">
+            
             <div class="split-media about-media">
-                <img src="media/slider-3.jpg" alt="Making authentic Italian pizza" class="about-img">
+                <!-- Aggiunto l'attributo "controls" -->
+                <video controls autoplay loop muted playsinline style="width: 100%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); display: block;">
+                    <source src="media/pizza-video.mp4" type="video/mp4">
+                </video>
             </div>
             
             <div class="split-text about-text">
+                <!-- Testo leggermente riassunto, allineamento a sinistra di default -->
                 <p class="intro-quote">
                     "My passion for pizza started after I moved to the UK and realised how much I missed the taste of a good, authentic Italian pizza. I started from the basics, spending countless hours learning about dough, fermentation, and hydration to get the perfect bake."
                 </p>
-                <p class="about-desc">
-                    What started as a personal passion slowly became something much bigger. That journey led to the creation of Pizza di Casa, an Italian street-food stall bringing fresh, homemade-style pizza to markets, pubs, festivals and private events across England.
-                </p>
-                <div class="center-text">
-                    <a href="our-story" class="btn-dark">READ OUR STORY</a>
-                </div>
             </div>
+            
+        </div>
+        
+        <p class="about-desc">
+            What started as a personal passion became something much bigger: Pizza di Casa, an Italian street-food stall bringing fresh, homemade-style pizza to markets, festivals, and private events across England.
+        </p>
+        <!-- Bottone spostato fuori dalle colonne, centrato sotto -->
+        <div class="center-text" style="margin-top: 40px;">
+            <a href="our-story" class="btn-dark">READ OUR STORY</a>
         </div>
     </section>
 
@@ -98,12 +106,20 @@
                 <p>We arrive, set up and cook fresh pizzas for your guests.</p>
             </div>
         </div>
-    </section>
 
-    
-            <div class="center-cta">
-                <a href="menu-services" class="btn-dark">EXPLORE FULL MENU</a>
-            </div>
+        <!-- Contenitore dei bottoni pulito -->
+        <div class="cta-buttons">
+            
+            <a href="menu-services" class="btn-dark">
+                Explore Our Menu
+            </a>
+            
+            <a href="media/menu-pizza-di-casa.jpeg" class="btn-outline dark-text" target="_blank" aria-label="Download menu as image format">
+                <i class="fa-solid fa-download" style="margin-right: 8px;"></i> Download full menu
+            </a>
+            
+        </div>
+    </section>
 
     <!-- 3. MENU & DIETARY SECTION -->
     <section class="dietary-section">
