@@ -216,7 +216,8 @@ h2.h2-menu {
 h2.menu-h2, .home-section h2 {
   font-size: 2.5rem;
   color: var(--primary-red);
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 h2.menu-h2 {
@@ -566,7 +567,7 @@ main li a:hover {
 .three-cols {
   display: flex;
   gap: 30px; /* Meglio i pixel fissi per evitare conflitti quando flex restringe le card */
-  margin-top: 40px;
+  margin-top: 20px;
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -588,7 +589,6 @@ main li a:hover {
   font-size: 1.8rem;
   font-weight: bold;
   color: var(--primary-red);
-  margin-bottom: 10px;
   display: inline-block;
   border-bottom: 2px solid var(--primary-red);
   padding-bottom: 5px;
@@ -1078,29 +1078,29 @@ main li a:hover {
 
 .about-split {
   text-align: left;
-  margin-top: 40px;
+  margin-top: 10px;
   justify-content: center; /* Centra orizzontalmente i due blocchi nello schermo */
 }
 
 /* Controlla la larghezza per bilanciare le altezze */
 .about-media {
   /*flex: 0 1 350px; */
-  flex: 1;
+  flex: 0.7;
 }
 
 .about-text {
   /*flex: 0 1 480px; */
-  flex: 1.2;
+  flex: 1.5;
 }
 
 /* Stile pulito per l'immagine */
 .about-img {
   width: 100%;
   height: auto;
-  aspect-ratio: 3 / 4;
   object-fit: cover;
   border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  display: block;
 }
 
 .about-desc {
@@ -1289,6 +1289,7 @@ main li a:hover {
 
   .about-img {
     max-width: 350px; /* Impedisce all'immagine di esplodere a tutto schermo */
+    aspect-ratio: 1 / 1; 
   }
 
   .about-text {
@@ -1322,4 +1323,94 @@ main li a:hover {
 }
 
 
+/* =========================================
+   HERO SECTION (Stacked Layout)
+   ========================================= */
+.hero-stacked {
+  background-color: var(--bg-light); 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.hero-video-banner {
+  width: 100%;
+  background-color: #000;
+  /* Rimuovi height e min-height! Lasciamo che l'altezza sia "auto" */
+  overflow: hidden;
+  padding: 10px 0;
+}
+
+.hero-video-banner video {
+  width: 100%;
+  max-height: 500px; /* Imposta qui il tuo tetto massimo per il desktop */
+  object-fit: contain; 
+  display: block; /* Fondamentale: rimuove un microscopico margine fantasma che i browser aggiungono sotto i tag video */
+}
+
+/* Blocco indipendente per la sfumatura verso il basso */
+.hero-fade-transition {
+  width: 100%;
+  height: 20px; /* Spessore della sfumatura */
+  background: linear-gradient(to bottom, #000000 0%, var(--bg-light) 100%);
+}
+
+.hero-text-block {
+  max-width: 900px;
+  text-align: center;
+  padding: 10px 20px 30px; /* Padding superiore ridotto per compensare la sfumatura */
+}
+
+.hero-text-block h1 {
+  font-size: 3.5rem;
+  color: var(--text-dark);
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.hero-text-block h1 span {
+  border: 1px solid var(--primary-red);
+  padding: 2px 3px;
+  border-radius: 12px;
+}
+
+.hero-text-block p {
+  font-size: 1.3rem;
+  color: #555;
+  margin-bottom: 35px;
+}
+
+/* Adattamenti Mobile per la nuova Hero */
+@media screen and (max-width: 768px) {
+  
+  .hero-fade-transition {
+    height: 40px; /* Sfumatura più corta e proporzionata su mobile */
+  }
+  
+  .hero-text-block {
+    padding: 10px 20px 20px;
+  }
+
+  .hero-text-block h1 {
+    font-size: 2.2rem;
+  }
+  
+  .hero-text-block p {
+    font-size: 1.1rem;
+  }
+
+  .hero-fade-transition {
+    height: 10px; /* Spessore della sfumatura */
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .hero-text-block h1 {
+      font-size: 2rem;
+  }
+
+  .step-card h3 {
+      margin-top: 10px;
+      margin-bottom: 10px;
+  }
+}

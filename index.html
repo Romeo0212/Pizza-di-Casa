@@ -46,29 +46,34 @@
 </header>
 
 <main>
-    <!-- 1. HERO SECTION -->
+    <!-- 1. HERO SECTION 
     <section class="hero">
         <div class="hero-content">
             <h1>Pizza di Casa, flavour of Italian authentic pizza</h1>
             <p>From a small town in Italy to the UK, bringing the real taste of Italian pizza to your table</p>
             <a href="mailto:tuaemail@esempio.com" class="btn-outline">Email Us</a>
         </div>
-    </section>
+    </section>-->
 
-    <!-- 1. HERO SECTION (Video Background) 
-    <section class="hero" style="overflow: hidden;">
+    <!-- 1. HERO SECTION (Stacked Video & Text) -->
+    <section class="hero-stacked">
         
-        <video autoplay loop muted playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
-            <source src="media/pizza-video.mp4" type="video/mp4">
-        </video>
-        
-        <div class="hero-content">
-            <h1>Pizza di Casa, flavour of Italian authentic pizza</h1>
-            <p>From a small town in Italy to the UK, bringing the real taste of Italian pizza to your table</p>
-            <a href="mailto:tuaemail@esempio.com" class="btn-outline">Email Us</a>
+        <div class="hero-video-banner">
+            <video controls autoplay loop muted playsinline>
+                <source src="media/pizza-video.mp4" type="video/mp4">
+            </video>
         </div>
+        
+        <!-- Nuova fascia di sfumatura tra video e testo -->
+        <div class="hero-fade-transition"></div>
+        
+        <div class="hero-text-block">
+            <h1><span class="red">Pizza di Casa</span>, flavour of Italian authentic pizza</h1>
+            <p>From a small town in Italy to the UK, bringing the real taste of Italian pizza to your table</p>
+            <a href="mailto:tuaemail@esempio.com" class="btn-outline dark-text">Email Us</a>
+        </div>
+        
     </section>
-    -->
 
     <!-- 2. ABOUT SUMMARY -->
     <section class="home-section about-section">
@@ -77,25 +82,20 @@
         <div class="split-layout about-split">
             
             <div class="split-media about-media">
-                <!-- Aggiunto l'attributo "controls" -->
-                <video controls autoplay loop muted playsinline style="width: 100%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); display: block;">
-                    <source src="media/pizza-video.mp4" type="video/mp4">
-                </video>
+                <img src="media/foto-home.jpg" alt="Pizza di Casa story" class="about-img">
             </div>
             
             <div class="split-text about-text">
-                <!-- Testo leggermente riassunto, allineamento a sinistra di default -->
                 <p class="intro-quote">
                     "My passion for pizza started after I moved to the UK and realised how much I missed the taste of a good, authentic Italian pizza. I started from the basics, spending countless hours learning about dough, fermentation, and hydration to get the perfect bake."
+                </p>
+                <p class="about-desc">
+                    What started as a personal passion became something much bigger: Pizza di Casa, an Italian street-food stall bringing fresh, homemade-style pizza to markets, festivals, and private events across England.
                 </p>
             </div>
             
         </div>
         
-        <p class="about-desc">
-            What started as a personal passion became something much bigger: Pizza di Casa, an Italian street-food stall bringing fresh, homemade-style pizza to markets, festivals, and private events across England.
-        </p>
-        <!-- Bottone spostato fuori dalle colonne, centrato sotto -->
         <div class="center-text" style="margin-top: 40px;">
             <a href="our-story" class="btn-dark">READ OUR STORY</a>
         </div>
