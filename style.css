@@ -1,21 +1,55 @@
 /*
 Theme Name: Pizza di Casa
-Author: Tuo Nome
-Description: Custom theme for Pizza di Casa London
-Version: 2.0
+Author: Romeo Calearo
+Description: Custom theme for Pizza di Casa London - Aesthetic Upgrade
+Version: 2.2
 */
 
+/* ==========================================================================
+   1. VARIABILI, RESET E STILI BASE
+   ========================================================================== */
 :root {
   --primary-red: #cc0000;
-  --bg-light: #fcfaf5; 
+  --primary-red-dark: #990000;
+  --primary-red-tint: rgba(204, 0, 0, 0.06); /* Tinta leggerissima per badge e sfondi */
+  --bg-light: #fcfaf5;
   --text-dark: #2c2c2c;
+  --text-muted: #555555;
   --header-bg: #1a1a1a;
+  --footer-bottom-bg: #111111;
+  --white: #ffffff;
+  
+  --font-serif: 'Georgia', serif;
+  --font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  
+  --radius-md: 12px;
+  --radius-pill: 30px;
+  
+  /* Ombre più morbide e stratificate (effetto più moderno) */
+  --shadow-soft: 0 10px 30px -5px rgba(0, 0, 0, 0.07), 0 4px 12px -2px rgba(0, 0, 0, 0.04);
+  --shadow-strong: 0 20px 40px -10px rgba(0, 0, 0, 0.16), 0 8px 16px -4px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 20px 35px -8px rgba(204, 0, 0, 0.12), 0 8px 20px -4px rgba(0, 0, 0, 0.08);
+  
+  --transition-fast: 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --transition-normal: 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Personalizzazione colore quando evidenzi il testo col mouse */
+::selection {
+  background-color: var(--primary-red);
+  color: var(--white);
+}
 
 body {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: var(--font-sans);
   background-color: var(--bg-light);
   color: var(--text-dark);
   margin: 0;
@@ -23,7 +57,44 @@ body {
   line-height: 1.6;
   display: flex;
   flex-direction: column;
-  min-height: 100vh; 
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased; /* Rende i font più nitidi su Mac e iOS */
+}
+
+main {
+  flex-grow: 1;
+}
+
+/* ==========================================================================
+   2. TIPOGRAFIA E CLASSI DI UTILITÀ
+   ========================================================================== */
+h1, h2, h3 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--text-dark);
+  letter-spacing: -0.01em; /* Compatta leggermente i titoli grandi in Georgia */
+}
+
+main p a,
+main li a {
+  color: var(--primary-red);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1.5px;
+  font-weight: 500;
+  transition: opacity var(--transition-fast), color var(--transition-fast);
+}
+
+main p a:hover,
+main li a:hover {
+  color: var(--primary-red-dark);
+  opacity: 0.85;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px dashed var(--primary-red);
+  outline-offset: 4px;
 }
 
 .red {
@@ -34,15 +105,126 @@ body {
   text-align: center;
 }
 
-main {
-  flex-grow: 1; 
+.center-cta {
+  text-align: center;
+  margin-top: 40px;
 }
 
-/* Tipografia Avanzata */
-h1, h2, h3 {
-  font-family: 'Georgia', serif; 
+.intro-text {
+  max-width: 800px;
+  margin: 0 auto 30px;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   3. COMPONENTI GLOBALI (Bottoni, Layout Generici)
+   ========================================================================== */
+
+/* --- Bottoni --- */
+.btn-dark {
+  display: inline-block;
+  background-color: #111111;
+  color: var(--white);
+  padding: 16px 40px;
+  text-decoration: none;
   font-weight: 700;
+  border-radius: var(--radius-pill);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  transition: all var(--transition-normal);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.btn-dark:hover {
+  background-color: var(--primary-red); /* UPGRADE: diventa rosso al passaggio del mouse */
+  color: var(--white);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(204, 0, 0, 0.3);
+}
+
+.btn-outline {
+  display: inline-block;
+  background-color: transparent;
+  color: var(--white);
+  padding: 14px 35px;
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: var(--radius-pill);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 2px solid var(--primary-red);
+  transition: all var(--transition-normal);
+}
+
+.btn-outline:hover {
+  background-color: var(--primary-red);
+  color: var(--white);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(204, 0, 0, 0.25);
+}
+
+.btn-outline.dark-text {
   color: var(--text-dark);
+  border-color: var(--text-dark);
+}
+
+.btn-outline.dark-text:hover {
+  background-color: var(--text-dark);
+  color: var(--white);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.btn-outline.btn-small {
+  padding: 10px 25px;
+  font-size: 0.85rem;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+/* --- Contenitori e Sezioni --- */
+.home-section {
+  padding: 35px 20px; /* Leggermente più respiro verticale tra le sezioni */
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.home-section h2,
+h2.menu-h2 {
+  font-size: 2.5rem;
+  color: var(--primary-red);
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+/* UPGRADE: Piccolo ornamento artigianale sotto i titoli H2 centrati */
+.home-section h2::after,
+h2.menu-h2::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  background-color: var(--primary-red);
+  margin: 12px auto 0;
+  border-radius: 2px;
+  opacity: 0.85;
+}
+
+h2.menu-h2 {
+  margin-top: 20px;
+}
+
+.page-container {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 0 20px;
 }
 
 .page-container h1 {
@@ -61,6 +243,7 @@ h1, h2, h3 {
   width: 60px;
   height: 4px;
   background-color: var(--primary-red);
+  border-radius: 2px;
 }
 
 .page-container h2 {
@@ -71,22 +254,87 @@ h1, h2, h3 {
 }
 
 h2.h2-menu {
-    margin-top: 15px;
+  margin-top: 15px;
 }
 
-/* Header & Navigation */
+/* --- Griglie e Split Layout --- */
+.split-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 35px; /* Aumentato da 20px a 35px per far respirare foto e testo */
+  align-items: center;
+}
+
+.split-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.split-media {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
+}
+
+.two-cols {
+  display: flex;
+  gap: 40px;
+  margin-top: 50px;
+  flex-wrap: wrap;
+}
+
+.col {
+  flex: 1;
+  min-width: 300px;
+  background: var(--white);
+  padding: 40px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  border-top: 5px solid var(--primary-red);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.col:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+.col h3 {
+  font-size: 1.5rem;
+  color: var(--primary-red);
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.col .cta-container {
+  margin-top: auto;
+  text-align: center;
+  padding-top: 25px;
+}
+
+/* ==========================================================================
+   4. HEADER E NAVIGAZIONE
+   ========================================================================== */
 .site-header {
-  background-color: var(--header-bg);
+  /* UPGRADE: Effetto vetro scuro semitrasparente quando si scorre la pagina */
+  background-color: rgba(26, 26, 26, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   padding: 10px 20px;
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4); 
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .header-inner {
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
@@ -96,9 +344,18 @@ h2.h2-menu {
   max-height: 70px;
   width: auto;
   display: block;
+  transition: transform var(--transition-fast);
 }
 
-/* Stile del Menu Dinamico */
+.site-logo img:hover {
+  transform: scale(1.04);
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+}
+
 .main-nav .nav-list {
   list-style: none;
   margin: 0;
@@ -109,13 +366,17 @@ h2.h2-menu {
 
 .main-nav .nav-list a,
 .main-nav .nav-list span.active-link {
-  color: #ffffff;
+  color: var(--white);
   text-decoration: none;
   font-weight: 600;
   text-transform: uppercase;
   font-size: 0.9rem;
   letter-spacing: 1px;
   position: relative;
+  padding: 5px 0;
+}
+
+.main-nav .nav-list span.active-link {
   cursor: default;
 }
 
@@ -124,11 +385,11 @@ h2.h2-menu {
   content: '';
   position: absolute;
   left: 0;
-  bottom: -5px;
+  bottom: 0;
   width: 0;
   height: 2px;
   background-color: var(--primary-red);
-  transition: width 0.3s ease;
+  transition: width var(--transition-normal);
 }
 
 .main-nav .nav-list a:hover::after,
@@ -136,387 +397,26 @@ h2.h2-menu {
   width: 100%;
 }
 
-.main-nav .nav-list a:hover,
-.main-nav .nav-list .current-menu-item > a {
-  color: #ffffff; 
-}
-
-/* Social Icons Header */
-.main-nav {
-  display: flex;
-  align-items: center;
-}
-
 .header-socials {
   display: flex;
   gap: 15px;
   margin-left: 30px;
   padding-left: 30px;
-  border-left: 1px solid #444; 
+  border-left: 1px solid #444444;
 }
 
 .header-socials a {
-  color: #ffffff;
+  color: var(--white);
   font-size: 1.2rem;
-  transition: color 0.3s, transform 0.2s;
+  transition: color var(--transition-normal), transform var(--transition-fast);
 }
 
 .header-socials a:hover {
   color: var(--primary-red);
-  transform: scale(1.1);
+  transform: scale(1.15) translateY(-1px);
 }
 
-/* Hero Section */
-.hero {
-  background-color: #111;
-  background-image: url('media/banner.jpg'); /* Spostato dal CSS inline */
-  background-size: cover;
-  background-position: center;
-  padding: 50px 20px 150px;
-  text-align: center;
-  color: #fff;
-  position: relative;
-}
-
-.hero::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.6);
-  z-index: 1;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.hero h1 {
-  font-size: 4rem;
-  margin-bottom: 15px;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-  color: #fff;
-}
-
-.hero p {
-  font-size: 1.3rem;
-  margin-bottom: 30px;
-}
-
-/* Sezioni Home Page */
-.home-section {
-  padding: 20px 20px;
-  max-width: 1100px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-h2.menu-h2, .home-section h2 {
-  font-size: 2.5rem;
-  color: var(--primary-red);
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-h2.menu-h2 {
-  margin-top: 20px;
-}
-
-
-/* Classi sostitutive per il testo inline rimosso */
-.intro-text {
-    max-width: 800px;
-    margin: 0 auto 30px;
-    font-size: 1.1rem;
-    color: #555;
-}
-
-.dietary-intro-spacing {
-    margin-bottom: 40px;
-}
-
-.two-cols {
-  display: flex;
-  gap: 40px;
-  margin-top: 50px;
-  flex-wrap: wrap;
-}
-
-/* Dietary Section */
-.dietary-section {
-  padding: 60px 20px;
-  text-align: center;
-}
-
-.dietary-content {
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.dietary-content h2 {
-  font-size: 2.2rem;
-  color: var(--text-dark);
-  margin-bottom: 20px;
-  margin-top: 0;
-}
-
-.dietary-content .underline {
-  text-decoration: underline;
-  text-underline-offset: 6px;
-  text-decoration-thickness: 3px;
-}
-
-.dietary-content p {
-  font-size: 1.1rem;
-  color: #555;
-  line-height: 1.8;
-}
-
-.dietary-icons {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
-  margin-bottom: 50px;
-}
-
-.diet-icon {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: #b54800; 
-  text-transform: uppercase;
-}
-
-.diet-icon .icon-circle {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  color: #fff;
-  font-weight: normal;
-  position: relative;
-  overflow: hidden;  
-}
-
-/* Stile per le immagini PNG personalizzate delle diete */
-.custom-diet-img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-  z-index: 2;
-  background-color: var(--bg-light);
-}
-
-/* Colori Icone */
-.icon-halal { background-color: #e55322; color: #ffffff; }
-.icon-gluten { background-color: #f7b718; color: #1a1a1a; } 
-.icon-vegan { background-color: #8bc53f; color: #1a1a1a; } 
-.icon-veg { background-color: #39b54a; color: #ffffff; } 
-.icon-dairy { background-color: #03A9F4; color: #ffffff; }
-
-/* Bottoni */
-.btn-dark {
-  display: inline-block;
-  background-color: #000000;
-  color: #ffffff;
-  padding: 16px 40px;
-  text-decoration: none;
-  font-weight: 700;
-  border-radius: 30px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: all 0.3s ease; 
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
-}
-
-.btn-dark:hover {
-  background-color: #333333;
-  color: #ffffff;
-  transform: translateY(-3px); 
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15); 
-}
-
-/* Pulsante Secondario (Email) */
-.btn-outline {
-  display: inline-block;
-  background-color: transparent;
-  color: #fff;
-  padding: 14px 35px;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 30px;
-  text-transform: uppercase;
-  border: 2px solid var(--primary-red);
-  transition: background 0.3s, color 0.3s, transform 0.2s;
-}
-
-.btn-outline:hover {
-  background-color: var(--primary-red);
-  color: #fff;
-  transform: translateY(-2px);
-}
-
-.btn-outline.dark-text {
-  color: var(--text-dark);
-  border-color: var(--text-dark);
-}
-.btn-outline.dark-text:hover {
-  background-color: var(--text-dark);
-  color: #fff;
-}
-
-/* Variante piccola per il footer spostata dal CSS inline */
-.btn-outline.btn-small {
-    padding: 10px 25px;
-    font-size: 0.85rem;
-}
-
-/* Center CTA Container rimosso dall'HTML */
-.center-cta {
-    text-align: center;
-    margin-top: 40px;
-}
-
-/* Cards */
-.col {
-  flex: 1;
-  min-width: 300px;
-  background: #ffffff;
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-  border-top: 5px solid var(--primary-red);
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-}
-
-.col .cta-container {
-  margin-top: auto; 
-  text-align: center; 
-  padding-top: 25px; 
-}
-
-.col h3 {
-  font-size: 1.5rem;
-  color: var(--primary-red);
-  margin-top: 0;
-  margin-bottom: 15px;
-}
-
-.page-container {
-  max-width: 900px;
-  margin: 60px auto;
-  padding: 0 20px;
-}
-
-/* Footer (Layout e Elementi puliti) */
-.site-footer {
-  background-color: #1a1a1a;
-  color: #888;
-  text-align: center;
-  margin-top: auto;
-  border-top: 5px solid var(--primary-red);
-  padding: 0;
-}
-
-.footer-main {
-  max-width: 1000px;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 40px;
-  text-align: center;
-  padding: 50px 20px;
-}
-
-.footer-col {
-  flex: 1;
-  min-width: 250px;
-}
-
-.footer-col h3 {
-  color: #fff;
-  margin-bottom: 15px;
-  font-size: 1.2rem;
-}
-
-/* Sostituisce il margin-bottom inline in Contact Us */
-.footer-contact-text {
-    margin-bottom: 20px;
-}
-
-.footer-socials {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-.footer-socials a {
-  font-size: 1.5rem;
-  color: #ffffff; 
-  transition: color 0.3s, transform 0.2s;
-}
-
-.footer-socials a:hover {
-  color: var(--primary-red);
-  transform: scale(1.1); 
-}
-
-.footer-legal-list { 
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  line-height: 2.2;
-}
-
-.footer-legal-link { 
-  color: #ccc;
-  text-decoration: none;
-}
-
-.footer-bottom {
-  background-color: #111111; 
-  padding: 20px;
-  font-size: 0.85rem;
-  border-top: 1px solid #2a2a2a;
-}
-
-.copyright-string {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-}
-
-.developer-link {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  transition: opacity 0.3s ease;
-}
-
-.developer-link:hover {
-  opacity: 0.8;
-}
-
-/* Utilities (Hamburger, WhatsApp, Text Links) */
+/* Hamburger Menu Button */
 .menu-toggle {
   display: none;
   background: transparent;
@@ -531,91 +431,382 @@ h2.menu-h2 {
   width: 30px;
   height: 3px;
   margin: 6px 0;
-  background-color: #ffffff;
-  transition: all 0.3s ease;
+  background-color: var(--white);
+  transition: all var(--transition-normal);
+  border-radius: 2px;
 }
 
 .menu-toggle.is-active .hamburger-line:nth-child(1) {
   transform: translateY(9px) rotate(45deg);
 }
+
 .menu-toggle.is-active .hamburger-line:nth-child(2) {
   opacity: 0;
 }
+
 .menu-toggle.is-active .hamburger-line:nth-child(3) {
   transform: translateY(-9px) rotate(-45deg);
 }
 
-main p a, 
-main li a {
+/* ==========================================================================
+   5. HERO SECTION (Stacked Video & Classic Fallback)
+   ========================================================================== */
+.hero-stacked {
+  background-color: var(--bg-light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-video-banner {
+  width: 100%;
+  background-color: #000000;
+  overflow: hidden;
+  padding: 10px 0;
+}
+
+.hero-video-banner video {
+  width: 100%;
+  max-height: 500px;
+  object-fit: contain;
+  display: block;
+}
+
+.hero-fade-transition {
+  width: 100%;
+  height: 25px;
+  background: linear-gradient(to bottom, #000000 0%, var(--bg-light) 100%);
+}
+
+.hero-text-block {
+  max-width: 900px;
+  text-align: center;
+  padding: 15px 20px 30px;
+}
+
+.hero-text-block h1 {
+  font-size: 3.5rem;
+  color: var(--text-dark);
+  margin-bottom: 20px;
+  line-height: 1.25;
+}
+
+/* UPGRADE: Badge "Pizza di Casa" rifinito con sfondo leggerissimo e padding bilanciato */
+.hero-text-block h1 span {
+  background-color: var(--primary-red-tint);
+  border: 2px solid var(--primary-red);
+  padding: 2px 14px;
+  border-radius: var(--radius-md);
+  display: inline-block;
+  box-shadow: 0 4px 12px rgba(204, 0, 0, 0.08);
+}
+
+.hero-text-block p {
+  font-size: 1.3rem;
+  color: var(--text-muted);
+  margin-bottom: 35px;
+}
+
+/* Hero Classica (Fallback) */
+.hero {
+  background-color: #111111;
+  background-image: url('media/banner.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 50px 20px 150px;
+  text-align: center;
+  color: var(--white);
+  position: relative;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-size: 4rem;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  color: var(--white);
+}
+
+.hero p {
+  font-size: 1.3rem;
+  margin-bottom: 30px;
+}
+
+/* ==========================================================================
+   6. SEZIONI HOME (About, How It Works, Dietary)
+   ========================================================================== */
+
+/* --- About Summary --- */
+.about-section {
+  max-width: 1000px;
+}
+
+.about-split {
+  text-align: left;
+  margin-top: 25px;
+  justify-content: center;
+}
+
+.about-media {
+  flex: 0.75;
+}
+
+.about-text {
+  flex: 1.45;
+}
+
+/* UPGRADE: Cornice sottile ed effetto hover sulla foto About */
+.about-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-strong);
+  border: 4px solid var(--white);
+  display: block;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.about-img:hover {
+  transform: scale(1.02);
+}
+
+/* UPGRADE: Barra laterale editoriale per la citazione */
+.intro-quote {
+  max-width: 800px;
+  margin: 0 auto 20px;
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-style: italic;
   color: var(--primary-red);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  font-weight: 500;
-  transition: opacity 0.2s ease, color 0.2s ease;
+  line-height: 1.55;
+  padding-left: 20px;
+  border-left: 3px solid var(--primary-red);
 }
 
-main p a:hover, 
-main li a:hover {
-  color: #a00000; 
-  opacity: 0.85;
+.about-desc {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin-bottom: 0;
 }
 
-
-/* =========================================
-   HOW IT WORKS (3 Steps)
-   ========================================= */
+/* --- How It Works (3 Steps) --- */
 .three-cols {
   display: flex;
-  gap: 30px; /* Meglio i pixel fissi per evitare conflitti quando flex restringe le card */
-  margin-top: 20px;
+  gap: 30px;
+  margin-top: 30px;
   flex-wrap: wrap;
   justify-content: center;
 }
 
+/* UPGRADE: Card interattive con sollevamento ed ombra morbida */
 .step-card {
-  /* 1 (cresce per riempire), 1 (si restringe se manca spazio), 250px (dimensione ideale di partenza) */
-  flex: 1 1 250px; 
-  max-width: 450px; /* Il tuo limite per evitare l'effetto "card gigante" */
+  flex: 1 1 250px;
+  max-width: 450px;
   text-align: center;
-  padding: 20px;
-  background-color: #ffffff;
-  border-radius: 12px;
-  border: 1px solid var(--primary-red);
+  padding: 30px 24px;
+  background-color: var(--white);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(204, 0, 0, 0.25);
   border-bottom: 5px solid var(--primary-red);
+  box-shadow: var(--shadow-soft);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
 }
 
+.step-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--primary-red);
+}
+
+/* UPGRADE: Numeri trasformati in badge circolari */
 .step-num {
-  font-family: 'Georgia', serif;
-  font-size: 1.8rem;
-  font-weight: bold;
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 700;
   color: var(--primary-red);
+  background-color: var(--primary-red-tint);
+  width: 52px;
+  height: 52px;
+  line-height: 52px;
+  border-radius: 50%;
   display: inline-block;
-  border-bottom: 2px solid var(--primary-red);
-  padding-bottom: 5px;
+  margin-bottom: 10px;
+  border: 1px solid rgba(204, 0, 0, 0.2);
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+.step-card:hover .step-num {
+  background-color: var(--primary-red);
+  color: var(--white);
 }
 
 .step-card h3 {
   font-size: 1.4rem;
   color: var(--primary-red);
+  margin-top: 10px;
+  margin-bottom: 10px;
   position: relative;
   z-index: 1;
 }
 
-/* =========================================
-   VINTAGE MENU CARD
-   ========================================= */
+/* --- Dietary Section --- */
+.dietary-section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.dietary-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.dietary-content h2 {
+  font-size: 2.2rem;
+  color: var(--text-dark);
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.dietary-content .underline {
+  text-decoration: underline;
+  text-decoration-color: var(--primary-red); /* Sottolineatura rossa per richiamare il brand */
+  text-underline-offset: 6px;
+  text-decoration-thickness: 3px;
+}
+
+.dietary-content p {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+.dietary-intro-spacing {
+  margin-bottom: 40px;
+}
+
+.dietary-icons {
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+}
+
+.diet-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #b54800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: transform var(--transition-normal);
+}
+
+/* UPGRADE: Animazione sulle icone dietetiche */
+.diet-icon:hover {
+  transform: translateY(-5px);
+}
+
+.diet-icon .icon-circle {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--white);
+  font-weight: normal;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border: 3px solid var(--white);
+  transition: box-shadow var(--transition-normal);
+}
+
+.diet-icon:hover .icon-circle {
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.18);
+}
+
+.custom-diet-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  z-index: 2;
+  background-color: var(--bg-light);
+}
+
+.icon-halal  { background-color: #e55322; color: var(--white); }
+.icon-gluten { background-color: #f7b718; color: var(--header-bg); }
+.icon-vegan  { background-color: #8bc53f; color: var(--header-bg); }
+.icon-veg    { background-color: #39b54a; color: var(--white); }
+.icon-dairy  { background-color: #03A9F4; color: var(--white); }
+
+/* ==========================================================================
+   7. PAGINA MENU (Vintage Menu Card)
+   ========================================================================== */
 .menu-card {
   background-color: var(--bg-light);
   border: 4px solid var(--primary-red);
   padding: 8px;
   margin: 40px auto;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+  position: relative;
 }
 
 .menu-card-inner {
   border: 1px solid var(--primary-red);
-  padding: 50px 30px;
+  padding: 50px 35px;
   text-align: center;
+  background: radial-gradient(circle at center, #ffffff 0%, var(--bg-light) 100%); /* Leggera luce al centro della carta */
+}
+
+.menu-corner {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-image: url('media/corner-ornament.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 5;
+}
+
+.corner-tl { top: 12px; left: 12px; }
+.corner-tr { top: 12px; right: 12px; transform: scaleX(-1); }
+.corner-bl { bottom: 12px; left: 12px; transform: scaleY(-1); }
+.corner-br { bottom: 12px; right: 12px; transform: scale(-1, -1); }
+
+.menu-title-img {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.menu-title-img img {
+  max-width: 100%;
+  height: auto;
+  width: 350px;
 }
 
 .menu-intro {
@@ -635,9 +826,10 @@ main li a:hover {
   justify-content: center;
   gap: 30px;
   flex-wrap: wrap;
-  border: 1px solid var(--primary-red);
+  border: 1px solid rgba(204, 0, 0, 0.4);
+  background-color: rgba(255, 255, 255, 0.6);
   border-radius: 20px;
-  padding: 20px 0;
+  padding: 20px;
   margin-bottom: 40px;
 }
 
@@ -676,15 +868,23 @@ main li a:hover {
   border-radius: 50%;
 }
 
-/* Elementi delle singole pizze */
+/* UPGRADE: Divisori tratteggiati delicati tra una pizza e l'altra */
 .menu-item {
-  margin-bottom: 40px;
+  margin-bottom: 35px;
+  padding-bottom: 35px;
+  border-bottom: 1px dashed rgba(204, 0, 0, 0.25);
+}
+
+.menu-item:last-of-type {
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
 .pizza-title {
   color: var(--primary-red);
   font-size: 2rem;
   text-transform: uppercase;
+  margin-top: 0;
   margin-bottom: 15px;
   letter-spacing: 2px;
 }
@@ -708,7 +908,6 @@ main li a:hover {
   text-align: left;
 }
 
-/* Colonna IT allineata a destra come nel volantino */
 .lang-col:first-child {
   text-align: right;
   flex-direction: row-reverse;
@@ -718,59 +917,22 @@ main li a:hover {
   margin: 0;
   font-size: 1rem;
   font-style: italic;
-  color: #444;
+  color: #444444;
 }
 
 .vert-line {
   width: 1px;
-  background-color: var(--primary-red);
+  background-color: rgba(204, 0, 0, 0.4);
 }
 
-/* Titolo Immagine Menù */
-.menu-title-img {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.menu-title-img img {
-  max-width: 100%;
-  height: auto;
-  width: 350px; /* Regola in base a quanto vuoi che sia grande il logo */
-}
-
-/* Bandierine Immagine */
 .lang-flag {
   width: 24px;
   height: 18px;
   object-fit: cover;
   border-radius: 2px;
   margin-top: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
-
-/* Angoli Decorativi Vintage */
-.menu-card {
-  background-color: var(--bg-light); /* Usa il tuo panna */
-  border: 4px solid var(--primary-red);
-  padding: 8px;
-  margin: 40px auto;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-  position: relative; /* Fondamentale per posizionare gli angoli */
-}
-
-.menu-corner {
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  background-image: url('media/corner-ornament.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  z-index: 5;
-}
-
-.corner-tl { top: 12px; left: 12px; }
-.corner-tr { top: 12px; right: 12px; transform: scaleX(-1); }
-.corner-bl { bottom: 12px; left: 12px; transform: scaleY(-1); }
-.corner-br { bottom: 12px; right: 12px; transform: scale(-1, -1); }
 
 .fi {
   font-size: 1.2rem;
@@ -778,114 +940,27 @@ main li a:hover {
   margin-top: 3px;
 }
 
-
-/* Adattamenti per Mobile */
-@media screen and (max-width: 600px) {
-  .pizza-ingredients {
-    flex-direction: column;
-    gap: 15px;
-    align-items: center;
-  }
-  
-  /* Annulla il reverse dell'italiano e mette le bandiere di fianco al testo */
-  .lang-col, 
-  .lang-col:first-child {
-    flex-direction: row;
-    text-align: left;
-    align-items: flex-start;
-    max-width: 300px;
-  }
-
-  .lang-col p {
-    font-size: 0.95rem; /* Testo leggermente ridotto per recuperare spazio */
-  }
-
-  /* Nasconde la linea orizzontale su mobile per compattare la lettura */
-  .vert-line {
-    display: none;
-  }
-
-  /* Riquadro diete compatto */
-  .menu-dietary-row {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .menu-diet-box {
-    text-align: center;
-    flex-direction: column; /* Mantiene l'icona a sinistra del testo */
-  }
-}
-
-
-
-.whatsapp-float {
-  position: fixed;
-  width: 60px;
-  height: 60px;
-  bottom: 40px;
-  right: 40px;
-  background-color: #25d366; 
-  color: #FFF;
-  border-radius: 50px;
-  text-align: center;
-  font-size: 32px;
-  box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  transition: transform 0.3s ease;
-}
-
-.whatsapp-float:hover {
-  transform: scale(1.1);
-  color: #fff;
-}
-
-/* =========================================
-   SPLIT LAYOUT (Menu a sinistra, Slider a destra)
-   ========================================= */
-.split-layout {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  align-items: center;
-}
-
-.split-text {
-  flex: 1;
-  min-width: 300px;
-}
-
-.split-media {
-  flex: 1;
-  min-width: 300px;
-  display: flex;
-  justify-content: center; /* Centra lo slider nella sua colonna */
-}
-
-/* =========================================
-   SLIDER FOTO VERTICALI (3:4)
-   ========================================= */
+/* ==========================================================================
+   8. PAGINA OUR STORY (Slider Verticale, Lightbox, Social Embeds)
+   ========================================================================== */
 .vertical-slider-container {
   position: relative;
   width: 100%;
-  max-width: 380px; /* Limita la larghezza per mantenere un'altezza elegante */
+  max-width: 380px;
   overflow: hidden;
-  border-radius: 12px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-strong);
+  border: 4px solid var(--white);
 }
 
 .vertical-slider {
   display: flex;
-  transition: transform 0.4s ease-in-out;
+  transition: transform 0.45s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .slide {
   min-width: 100%;
-  height: 410px; /* Altezza fissa su desktop, si restringe solo la larghezza */
+  height: 410px;
 }
 
 .slide img {
@@ -894,96 +969,94 @@ main li a:hover {
   object-fit: cover;
   display: block;
   cursor: pointer;
+  transition: transform 0.5s ease;
 }
 
-/* Controlli Slider (Frecce e Pallini) */
-.slider-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.6);
-  color: #fff;
-  border: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s ease;
-  z-index: 10;
+.slide img:hover {
+  transform: scale(1.03);
 }
 
-.slider-btn:hover { background-color: var(--primary-red); }
-.prev-btn { left: 15px; }
-.next-btn { right: 15px; }
-
-/* Aggiungi queste nuove regole in fondo al file, sotto .lightbox-close */
+.slider-btn,
 .lightbox-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.6);
-  color: #fff;
-  border: none;
-  width: 50px;
-  height: 50px;
+  background-color: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background-color var(--transition-normal), transform var(--transition-fast);
+}
+
+.slider-btn {
+  width: 42px;
+  height: 42px;
+  z-index: 10;
+}
+
+.lightbox-btn {
+  width: 50px;
+  height: 50px;
   font-size: 1.2rem;
-  transition: background-color 0.3s ease;
   z-index: 2001;
 }
 
+.slider-btn:hover,
 .lightbox-btn:hover {
   background-color: var(--primary-red);
+  border-color: var(--primary-red);
+  transform: translateY(-50%) scale(1.08);
 }
 
-#lb-prev { left: 20px; }
-#lb-next { right: 20px; }
+.prev-btn { left: 15px; }
+.next-btn { right: 15px; }
+#lb-prev  { left: 20px; }
+#lb-next  { right: 20px; }
 
 .slider-dots {
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-top: 15px; /* Spazio tra la foto e i pallini */
+  margin-top: 15px;
   width: 100%;
 }
 
 .dot {
-  width: 12px;
-  height: 12px;
-  background-color: #d1d1d1; /* Grigio chiaro per risaltare sul bianco/panna */
+  width: 10px;
+  height: 10px;
+  background-color: #d1d1d1;
   border-radius: 50%;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: all var(--transition-normal);
 }
 
 .dot:hover {
   transform: scale(1.2);
+  background-color: #aaaaaa;
 }
 
-.dot.active { 
-  background-color: var(--primary-red); 
+/* UPGRADE: Il pallino attivo diventa una "pillola" allungata molto moderna */
+.dot.active {
+  background-color: var(--primary-red);
+  width: 26px;
+  border-radius: 10px;
 }
 
-/* =========================================
-   LIGHTBOX (Effetto Schermo Intero)
-   ========================================= */
+/* --- Lightbox --- */
 .lightbox {
-  display: none; /* Nascosto di default */
+  display: none;
   position: fixed;
-  z-index: 2000; /* Livello altissimo per coprire anche l'header */
-  left: 0;
-  top: 0;
+  z-index: 2000;
+  inset: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.85); /* Sfondo scuro semitrasparente */
-  backdrop-filter: blur(5px); /* Bellissimo effetto sfocato per lo sfondo */
+  background-color: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(6px);
   overflow: auto;
 }
 
@@ -991,18 +1064,18 @@ main li a:hover {
   margin: auto;
   display: block;
   max-width: 90%;
-  max-height: 85vh; /* Non supera mai l'85% dell'altezza dello schermo */
+  max-height: 85vh;
   position: relative;
   top: 50%;
-  transform: translateY(-50%); /* Centra l'immagine verticalmente */
+  transform: translateY(-50%);
   border-radius: 8px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
   animation: zoomIn 0.3s ease;
 }
 
 @keyframes zoomIn {
   from { transform: translateY(-50%) scale(0.95); opacity: 0; }
-  to { transform: translateY(-50%) scale(1); opacity: 1; }
+  to   { transform: translateY(-50%) scale(1);    opacity: 1; }
 }
 
 .lightbox-close {
@@ -1011,8 +1084,8 @@ main li a:hover {
   right: 35px;
   color: #f1f1f1;
   font-size: 40px;
-  font-weight: bold;
-  transition: 0.3s;
+  font-weight: 700;
+  transition: color var(--transition-normal), transform var(--transition-fast);
   cursor: pointer;
   z-index: 2001;
 }
@@ -1020,158 +1093,203 @@ main li a:hover {
 .lightbox-close:hover,
 .lightbox-close:focus {
   color: var(--primary-red);
+  transform: scale(1.1);
 }
 
-/* =========================================
-   CONTENITORE VIDEO SOCIAL (Our Story)
-   ========================================= */
+/* --- Social Embed Container --- */
 .social-embed-container {
   display: flex;
   justify-content: center;
   margin: 50px auto;
   width: 100%;
-  max-width: 450px; /* Larghezza ideale per un singolo Reel */
+  max-width: 450px;
 }
 
-/* Forza i blocchi incorporati (sia TikTok che Instagram) a rimuovere bordi bianchi, sfondi ed ombre esterne */
 .social-embed-container blockquote.tiktok-embed,
 .social-embed-container iframe,
 .social-embed-container blockquote.instagram-media {
   background: transparent !important;
   border: none !important;
   margin: 0 !important;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
-  border-radius: 12px !important;
+  box-shadow: var(--shadow-soft) !important;
+  border-radius: var(--radius-md) !important;
   width: 100% !important;
-  min-width: auto !important; /* Disabilita i min-width forzati di Instagram su mobile */
+  min-width: auto !important;
 }
 
-/* =========================================
-   CALL TO ACTION BUTTONS
-   ========================================= */
-/* Versione Desktop: affiancati e centrati */
-.cta-buttons {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 40px;
+/* ==========================================================================
+   9. FOOTER E PULSANTE WHATSAPP
+   ========================================================================== */
+.site-footer {
+  background-color: var(--header-bg);
+  color: #999999;
+  text-align: center;
+  margin-top: auto;
+  border-top: 5px solid var(--primary-red);
+  padding: 0;
 }
 
-/* Versione Mobile: incolonnati e larghi uguali */
-@media screen and (max-width: 768px) {
-  .cta-buttons {
-    flex-direction: column;
-    align-items: stretch; /* Forza il bottone corto ad allargarsi */
-    width: max-content; /* Il contenitore prende la larghezza del bottone con più testo */
-    margin-left: auto; /* Centra il contenitore nella pagina */
-    margin-right: auto;
-  }
-}
-
-/* =========================================
-   ABOUT SECTION (Home)
-   ========================================= */
-.about-section {
+.footer-main {
   max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  text-align: center;
+  padding: 55px 20px;
 }
 
-.about-split {
-  text-align: left;
-  margin-top: 10px;
-  justify-content: center; /* Centra orizzontalmente i due blocchi nello schermo */
+.footer-col {
+  flex: 1;
+  min-width: 250px;
 }
 
-/* Controlla la larghezza per bilanciare le altezze */
-.about-media {
-  /*flex: 0 1 350px; */
-  flex: 0.7;
+.footer-col h3 {
+  color: var(--white);
+  margin-bottom: 15px;
+  font-size: 1.25rem;
 }
 
-.about-text {
-  /*flex: 0 1 480px; */
-  flex: 1.5;
+.footer-contact-text {
+  margin-bottom: 20px;
 }
 
-/* Stile pulito per l'immagine */
-.about-img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-  display: block;
+.footer-socials {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
-.about-desc {
-  font-size: 1.1rem;
-  color: #555;
-  /*margin-bottom: 30px;*/
-  margin-bottom: 0px;
-}
-
-.intro-quote {
-  max-width: 800px;
-  margin: 0 auto 0;
-  font-family: 'Georgia', serif;
+.footer-socials a {
   font-size: 1.5rem;
-  font-style: italic;
-  color: var(--primary-red);
-  line-height: 1.5;
+  color: var(--white);
+  transition: color var(--transition-normal), transform var(--transition-fast);
 }
 
-/* Adattamento per tablet e schermi medi (mantiene 2 colonne) */
+.footer-socials a:hover {
+  color: var(--primary-red);
+  transform: scale(1.15) translateY(-2px);
+}
+
+.footer-legal-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  line-height: 2.2;
+}
+
+.footer-legal-link {
+  color: #cccccc;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footer-legal-link:hover {
+  color: var(--white);
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  background-color: var(--footer-bottom-bg);
+  padding: 10px;
+  font-size: 0.85rem;
+  border-top: 1px solid #2a2a2a;
+}
+
+.copyright-string {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.developer-link {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 700;
+  transition: color var(--transition-fast);
+}
+
+.developer-link:hover {
+  color: var(--primary-red);
+}
+
+.whatsapp-float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 40px;
+  right: 40px;
+  background-color: #25d366;
+  color: var(--white);
+  border-radius: 50%;
+  text-align: center;
+  font-size: 32px;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1) translateY(-3px);
+  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.55);
+  color: var(--white);
+}
+
+/* ==========================================================================
+   10. MEDIA QUERIES (Tutte le regole responsive centralizzate)
+   ========================================================================== */
+
+/* --- Tablet e Schermi Medi (769px - 950px) --- */
 @media screen and (min-width: 769px) and (max-width: 950px) {
-  /*.about-media {
-    flex: 0 1 240px; 
-  }
-  .about-text {
-    flex: 1 1 350px; 
-  }*/
   .intro-quote {
-    font-size: 1.25rem; /* Riduce la citazione per evitare che si allunghi troppo in verticale */
+    font-size: 1.25rem;
   }
   .about-desc {
     font-size: 1rem;
   }
 }
 
-/* Mobile */
+/* --- Tablet Verticali e Smartphone (max-width: 768px) --- */
 @media screen and (max-width: 768px) {
-  .copyright-string {
-    flex-direction: column;
-    gap: 2px;
-  }
-  .footer-divider {
-    display: none;
-  }
-  
+  /* Header & Nav Mobile */
   .header-inner {
-    flex-direction: row; 
+    flex-direction: row;
     justify-content: space-between;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
+  }
+
+  .site-logo img {
+    max-height: 60px;
   }
 
   .menu-toggle {
-    display: block; 
+    display: block;
   }
 
   .main-nav {
-    display: none; 
-    position: absolute; 
-    top: 100%; 
+    display: none;
+    position: absolute;
+    top: 100%;
     left: 0;
     width: 100%;
-    background-color: var(--header-bg); 
+    background-color: var(--header-bg);
     text-align: center;
     padding-top: 20px;
     padding-bottom: 30px;
-    box-shadow: 0 10px 15px rgba(0,0,0,0.4); 
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.4);
     z-index: 999;
   }
-  
+
   .main-nav.is-open {
-    display: block; 
+    display: block;
   }
 
   .main-nav .nav-list {
@@ -1179,53 +1297,79 @@ main li a:hover {
     gap: 25px;
   }
 
-  .site-logo img {
-    max-height: 60px;
-  }
-
   .header-socials {
     margin-left: 0;
     padding-left: 0;
-    border-left: none; 
-    justify-content: center; 
+    border-left: none;
+    justify-content: center;
     margin-top: 20px;
     padding-top: 20px;
-    border-top: 1px solid #333; 
-  }
-  
-  .header-socials a {
-    font-size: 1.5rem; 
+    border-top: 1px solid #333333;
   }
 
-  .hero {
-    padding: 60px 20px 100px; 
+  .header-socials a {
+    font-size: 1.5rem;
   }
-  
-  .hero h1 {
+
+  /* Hero Mobile */
+  .hero {
+    padding: 60px 20px 100px;
+  }
+
+  .hero h1,
+  .hero-text-block h1 {
     font-size: 2.2rem;
   }
-  
-  .hero p {
+
+  .hero p,
+  .hero-text-block p {
     font-size: 1.1rem;
     margin-bottom: 20px;
+  }
+
+  .hero-fade-transition {
+    height: 15px;
+  }
+
+  .hero-text-block {
+    padding: 10px 20px 20px;
+  }
+
+  /* Sezioni, Testi e Contenitori Mobile */
+  .home-section,
+  .dietary-section,
+  .page-container {
+    padding: 25px 20px;
+    margin: 15px auto;
   }
 
   .page-container h1 {
     font-size: 2rem;
   }
-  
-  h2.menu-h2, .home-section h2, 
+
+  .home-section h2,
+  h2.menu-h2,
   .dietary-content h2 {
     font-size: 1.8rem;
   }
 
-  .home-section, 
-  .dietary-section,
-  .page-container {
-    padding: 20px 20px;
-    margin: 20px auto;
+  /* Bottoni Mobile */
+  .btn,
+  .btn-dark,
+  .btn-outline {
+    padding: 12px 25px;
+    font-size: 0.9rem;
   }
 
+  .cta-buttons {
+    flex-direction: column;
+    align-items: stretch;
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Griglie, Card e Split Layout Mobile */
   .two-cols {
     margin-top: 30px;
     gap: 20px;
@@ -1236,181 +1380,153 @@ main li a:hover {
     padding: 25px;
   }
 
-  .split-text, 
+  .split-layout {
+    gap: 20px;
+  }
+
+  .split-text,
   .split-media {
     min-width: 100%;
-  }
-
-  .dietary-icons {
-    gap: 15px;
-    margin-bottom: 30px;
-  }
-  
-  .diet-icon .icon-circle {
-    width: 60px;
-    height: 60px;
-    font-size: 1.5rem;
-  }
-  
-  .diet-icon {
-    font-size: 0.75rem;
-  }
-  
-  .btn, .btn-dark, .btn-outline {
-    padding: 12px 25px;
-    font-size: 0.9rem;
-  }
-
-  /* Annulla il limite rigido di 300px su mobile */
-  .split-text, 
-  .split-media {
-    min-width: 100%;
-  }
-
-  .pizza-title {
-    font-size: 1.4rem; /* Rimpicciolisce il testo della pizza */
-    letter-spacing: 1px; /* Riduce lo spazio tra le lettere per far stare parole lunghe */
-    display: flex; /* Trasforma il titolo in un contenitore flessibile */
-    justify-content: center;
-    align-items: center;
-    gap: 10px; /* Forza uno spazio fisso tra i ~ e la parola, impedendo l'a capo */
-  }
-
-  .pizza-title span {
-    font-size: 1rem; /* Rimpicciolisce proporzionalmente anche i ~ */
   }
 
   .about-media {
     flex: 1 1 100%;
-    margin: 0 auto 20px auto; /* Centra l'immagine orizzontalmente e crea spazio sotto */
-    max-width: 500px; /* Impedisce all'immagine di esplodere a tutto schermo */
+    margin: 0 auto 10px auto;
+    max-width: 500px;
     min-width: 0;
   }
 
   .about-img {
-    max-width: 350px; /* Impedisce all'immagine di esplodere a tutto schermo */
-    aspect-ratio: 1 / 1; 
+    max-width: 350px;
   }
 
   .about-text {
     flex: 1 1 100%;
-    text-align: center; /* Opzionale, ma su mobile il testo centrato è solitamente più bilanciato se l'immagine sopra è centrata */
+    text-align: center;
+  }
+
+  /* Su mobile rimuoviamo la barra laterale della citazione perché il testo è centrato */
+  .intro-quote {
+    border-left: none;
+    padding-left: 0;
   }
 
   .step-card {
-    padding: 12px;
+    padding: 20px 15px;
+  }
+
+  /* Dietary Icons Mobile */
+  .dietary-icons {
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+
+  .diet-icon {
+    font-size: 0.75rem;
+  }
+
+  .diet-icon .icon-circle {
+    width: 64px;
+    height: 64px;
+    font-size: 1.5rem;
+  }
+
+  /* Menu Pizze Mobile */
+  .pizza-title {
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .pizza-title span {
+    font-size: 1rem;
+  }
+
+  /* Footer & WhatsApp Mobile */
+  .copyright-string {
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .footer-divider {
+    display: none;
+  }
+
+  .whatsapp-float {
+    width: 52px;
+    height: 52px;
+    bottom: 20px;
+    right: 20px;
+    font-size: 28px;
   }
 }
 
-/* Smartphone piccoli: lo slider si rimpicciolisce proporzionalmente */
+/* --- Menu Card su Schermi Piccoli (max-width: 600px) --- */
+@media screen and (max-width: 600px) {
+  .menu-card-inner {
+    padding: 40px 20px;
+  }
+
+  .pizza-ingredients {
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+
+  .lang-col,
+  .lang-col:first-child {
+    flex-direction: row;
+    text-align: left;
+    align-items: flex-start;
+    max-width: 300px;
+  }
+
+  .lang-col p {
+    font-size: 0.95rem;
+  }
+
+  .vert-line {
+    display: none;
+  }
+
+  .menu-dietary-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .menu-diet-box {
+    text-align: center;
+    flex-direction: column;
+  }
+}
+
+/* --- Smartphone Piccoli (max-width: 450px) --- */
 @media screen and (max-width: 450px) {
+  .hero-text-block h1 {
+    font-size: 2rem;
+  }
+
+  .intro-quote {
+    font-size: 1.25rem;
+  }
+
+  .step-card h3 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
   .slide {
     height: auto;
     aspect-ratio: 3 / 4;
   }
-
-  /* Extra per la citazione in About Section, per evitare che diventi troppo grande su schermi piccoli */
-  .intro-quote {
-    font-size: 1.25rem;
-  }
 }
 
-/* Sotto i 370px: forza 2 icone sopra e 2 sotto centrate */
+/* --- Schermi Ultra-Piccoli (max-width: 370px) --- */
 @media screen and (max-width: 370px) {
   .diet-icon {
-    flex: 0 0 calc(50% - 15px); 
-  }
-}
-
-
-/* =========================================
-   HERO SECTION (Stacked Layout)
-   ========================================= */
-.hero-stacked {
-  background-color: var(--bg-light); 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.hero-video-banner {
-  width: 100%;
-  background-color: #000;
-  /* Rimuovi height e min-height! Lasciamo che l'altezza sia "auto" */
-  overflow: hidden;
-  padding: 10px 0;
-}
-
-.hero-video-banner video {
-  width: 100%;
-  max-height: 500px; /* Imposta qui il tuo tetto massimo per il desktop */
-  object-fit: contain; 
-  display: block; /* Fondamentale: rimuove un microscopico margine fantasma che i browser aggiungono sotto i tag video */
-}
-
-/* Blocco indipendente per la sfumatura verso il basso */
-.hero-fade-transition {
-  width: 100%;
-  height: 20px; /* Spessore della sfumatura */
-  background: linear-gradient(to bottom, #000000 0%, var(--bg-light) 100%);
-}
-
-.hero-text-block {
-  max-width: 900px;
-  text-align: center;
-  padding: 10px 20px 30px; /* Padding superiore ridotto per compensare la sfumatura */
-}
-
-.hero-text-block h1 {
-  font-size: 3.5rem;
-  color: var(--text-dark);
-  margin-bottom: 20px;
-  line-height: 1.2;
-}
-
-.hero-text-block h1 span {
-  border: 1px solid var(--primary-red);
-  padding: 2px 3px;
-  border-radius: 12px;
-}
-
-.hero-text-block p {
-  font-size: 1.3rem;
-  color: #555;
-  margin-bottom: 35px;
-}
-
-/* Adattamenti Mobile per la nuova Hero */
-@media screen and (max-width: 768px) {
-  
-  .hero-fade-transition {
-    height: 40px; /* Sfumatura più corta e proporzionata su mobile */
-  }
-  
-  .hero-text-block {
-    padding: 10px 20px 20px;
-  }
-
-  .hero-text-block h1 {
-    font-size: 2.2rem;
-  }
-  
-  .hero-text-block p {
-    font-size: 1.1rem;
-  }
-
-  .hero-fade-transition {
-    height: 10px; /* Spessore della sfumatura */
-  }
-}
-
-@media screen and (max-width: 450px) {
-  .hero-text-block h1 {
-      font-size: 2rem;
-  }
-
-  .step-card h3 {
-      margin-top: 10px;
-      margin-bottom: 10px;
+    flex: 0 0 calc(50% - 15px);
   }
 }
