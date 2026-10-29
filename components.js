@@ -115,6 +115,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     <span class="copy-block">All rights reserved.</span>
                     <span class="footer-divider">|</span>
                     <span class="copy-block">Web Development: <a href="https://romeo0212.github.io/landing-page/en" target="_blank" rel="noopener nofollow" class="developer-link">Romeo Calearo</a></span>
+                    <span class="footer-divider">|</span>
+                    <span class="copy-block">Logo design: <a href="https://github.com/sebamarana" target="_blank" rel="noopener nofollow" class="developer-link">Sebastiano Marana</a></span>
                 </p>
             </div>
         </footer>
