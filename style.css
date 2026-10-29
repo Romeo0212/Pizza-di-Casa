@@ -667,6 +667,8 @@ h2.h2-menu {
 
 /* --- Dietary Section --- */
 .dietary-section {
+  background-color: #f4efe4; /* Sfondo crema caldo a contrasto */
+  border-top: 1px solid rgba(204, 0, 0, 0.1); /* Linea di divisione superiore */
   padding: 60px 20px;
   text-align: center;
 }
@@ -1118,6 +1120,236 @@ h2.h2-menu {
 }
 
 /* ==========================================================================
+   REVIEWS SECTION (Home)
+   ========================================================================== */
+.reviews-banner {
+  /* NIENTE SFONDO DIVERSO: si fonde col var(--bg-light) della pagina */
+  padding: 60px 20px;
+  margin-top: 20px;
+}
+
+.reviews-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.reviews-header {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.reviews-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--white);
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(204, 0, 0, 0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+  margin-bottom: 12px;
+  font-size: 0.9rem;
+}
+
+.stars,
+.stars-small {
+  color: #f5a623;
+  letter-spacing: 2px;
+}
+
+.stars-small {
+  font-size: 0.85rem;
+}
+
+.reviews-header h2 {
+  font-size: 2.2rem;
+  color: var(--primary-red);
+  margin: 0;
+}
+
+.reviews-header h2::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  background-color: var(--primary-red);
+  margin: 12px auto 0;
+  border-radius: 2px;
+  opacity: 0.85;
+}
+
+/* --- Sezione Desktop (3 Colonne fisse, controlli nascosti) --- */
+.reviews-carousel-wrapper {
+  position: relative;
+}
+
+.reviews-mobile-controls {
+  display: none; 
+}
+
+.reviews-grid {
+  display: flex;
+  gap: 25px;
+  align-items: stretch;
+}
+
+.review-card {
+  flex: 1;
+  background-color: var(--white);
+  padding: 25px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(204, 0, 0, 0.2);
+  border-bottom: 4px solid var(--primary-red);
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  transition: transform var(--transition-normal);
+}
+
+.review-card:hover {
+  transform: translateY(-4px);
+}
+
+.review-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.verified-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #2e7d32; 
+  background-color: #e8f5e9;
+  padding: 3px 8px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.review-card h3 {
+  font-size: 1.15rem;
+  color: var(--text-dark);
+  margin: 0 0 10px 0;
+}
+
+.review-card p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin: 0 0 20px 0;
+  flex-grow: 1; 
+}
+
+.review-author {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(0, 0, 0, 0.1);
+}
+
+.review-author span {
+  color: #888888;
+}
+
+.reviews-footer {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.reviews-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-dark);
+  text-decoration: none;
+  font-size: 0.95rem;
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  border: 1px solid #cccccc;
+  background-color: var(--white);
+  transition: all var(--transition-fast);
+}
+
+.reviews-link:hover {
+  border-color: var(--primary-red);
+  color: var(--primary-red);
+}
+
+/* ==========================================================================
+   TRUST BAR COMPATTA (Pre-Footer)
+   ========================================================================== */
+.trust-bar {
+  background-color: #f4efe4; /* Crema caldo */
+  border-top: 1px solid rgba(204, 0, 0, 0.2);
+  padding: 16px 20px;
+  margin-top: 40px;
+}
+
+.trust-bar-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px 25px;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+}
+
+.trust-bar-rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.trust-bar-rating .stars {
+  color: #f5a623;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+.trust-bar-divider {
+  color: #bbbbbb;
+}
+
+.trust-bar-verified {
+  color: #2e7d32;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.trust-bar-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--white);
+  color: var(--text-dark);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--primary-red);
+  transition: all var(--transition-fast);
+}
+
+.trust-bar-btn:hover {
+  background-color: var(--primary-red);
+  color: var(--white);
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
    9. FOOTER E PULSANTE WHATSAPP
    ========================================================================== */
 .site-footer {
@@ -1443,6 +1675,79 @@ h2.h2-menu {
 
   .pizza-title span {
     font-size: 1rem;
+  }
+
+  /* Reviews Mini-Carosello Mobile */
+  .reviews-banner {
+    padding: 35px 20px;
+  }
+
+  /* Questo contenitore è vitale: taglia via le card fuori schermo! */
+  .reviews-slider-window {
+    overflow: hidden; 
+    width: 100%;
+    padding: 10px 2px; /* Margine interno per non mozzare le ombre delle card */
+  }
+
+  .reviews-grid {
+    display: flex;
+    gap: 0; /* Azzerato: ogni slide sarà esattamente larga quanto la finestra */
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+
+  .review-card {
+    flex: 0 0 100%; /* Ogni card occupa il 100% dello spazio orizzontale */
+    min-width: 100%;
+    padding: 22px 20px;
+  }
+
+  .review-card:hover {
+    transform: none; /* Disabilita l'hover su mobile */
+  }
+
+  /* Controlli visibili e centrati */
+  .reviews-mobile-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 15px;
+  }
+
+  .reviews-mobile-controls .slider-dots {
+    width: auto;
+    margin-top: 0;
+  }
+
+  .rev-nav-btn {
+    background-color: var(--white);
+    color: var(--primary-red);
+    border: 1px solid rgba(204, 0, 0, 0.3);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+    transition: all var(--transition-fast);
+  }
+
+  .rev-nav-btn:active {
+    background-color: var(--primary-red);
+    color: var(--white);
+  }
+
+  .trust-bar-inner {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .trust-bar-divider {
+    display: none;
   }
 
   /* Footer & WhatsApp Mobile */

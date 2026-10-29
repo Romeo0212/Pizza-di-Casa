@@ -143,4 +143,86 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    // =========================================
+    // 4. MINI-CAROSELLO RECENSIONI (MOBILE)
+    // =========================================
+    const revSlider = document.getElementById('reviews-slider');
+    const revPrev = document.querySelector('.rev-prev');
+    const revNext = document.querySelector('.rev-next');
+    const revDotsContainer = document.getElementById('reviews-dots');
+
+    if (revSlider && revDotsContainer) {
+        let revIndex = 0;
+        const revCards = revSlider.querySelectorAll('.review-card');
+        const totalRevs = revCards.length;
+
+        // Genera i pallini dinamicamente
+        revDotsContainer.innerHTML = '';
+        for (let i = 0; i < totalRevs; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (i === 0) dot.classList.add('active');
+            dot.setAttribute('data-index', i);
+            revDotsContainer.appendChild(dot);
+        }
+
+        const revDots = revDotsContainer.querySelectorAll('.dot');
+
+        function updateRevSlider() {
+            // Se siamo su Desktop (> 768px), rimuovi ogni traslazione per mostrare le 3 colonne
+            if (window.innerWidth > 768) {
+                revSlider.style.transform = 'none';
+                return;
+            }
+            revSlider.style.transform = `translateX(-${revIndex * 100}%)`;
+            revDots.forEach(dot => dot.classList.remove('active'));
+            if (revDots[revIndex]) {
+                revDots[revIndex].classList.add('active');
+            }
+        }
+
+        if (revNext) {
+            revNext.addEventListener('click', () => {
+                revIndex = (revIndex + 1) % totalRevs;
+                updateRevSlider();
+            });
+        }
+
+        if (revPrev) {
+            revPrev.addEventListener('click', () => {
+                revIndex = (revIndex - 1 + totalRevs) % totalRevs;
+                updateRevSlider();
+            });
+        }
+
+        revDots.forEach(dot => {
+            dot.addEventListener('click', (e) => {
+                revIndex = parseInt(e.target.getAttribute('data-index'));
+                updateRevSlider();
+            });
+        });
+
+        // Supporto Swipe Touch col dito su smartphone
+        let startX = 0;
+        revSlider.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+        }, { passive: true });
+
+        revSlider.addEventListener('touchend', (e) => {
+            const endX = e.changedTouches[0].clientX;
+            const diff = startX - endX;
+            if (Math.abs(diff) > 40) { // Soglia minima di 40px per riconoscere lo swipe
+                if (diff > 0) {
+                    revIndex = (revIndex + 1) % totalRevs; // Swipe verso sinistra -> Avanti
+                } else {
+                    revIndex = (revIndex - 1 + totalRevs) % totalRevs; // Swipe verso destra -> Indietro
+                }
+                updateRevSlider();
+            }
+        }, { passive: true });
+
+        // Reset automatico se si ridimensiona la finestra da mobile a desktop
+        window.addEventListener('resize', updateRevSlider);
+    }
 });
