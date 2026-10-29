@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <!-- Tutto il tuo codice interno rimane identico -->
             <div class="header-inner">
                 <div class="site-logo">
-                    <a href="./"><img src="media/logo_pizza.png" alt="Pizza di Casa Logo"></a>
+                    <a href="./"><img src="media/new_logos/png/logo_pizza_casa.png" alt="Pizza di Casa Logo"></a>
                 </div>
                 <button class="menu-toggle" aria-expanded="false" aria-label="Menu">
                     <span class="hamburger-line"></span>
