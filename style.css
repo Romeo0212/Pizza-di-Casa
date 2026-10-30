@@ -1254,7 +1254,7 @@ h2.h2-menu {
 }
 
 .review-author span {
-  color: #888888;
+  color: var(--text-dark);
 }
 
 .reviews-footer {
